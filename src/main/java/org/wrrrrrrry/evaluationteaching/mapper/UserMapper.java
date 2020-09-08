@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.wrrrrrrry.evaluationteaching.entity.User;
 
 @Repository
-public interface TestMapper {
-    User sel(int id);
+public interface UserMapper {
+    // 根据code查询用户信息及其拥有的权限
+    public User queryUserAndAuthoritiesByCode(int code);
 }
