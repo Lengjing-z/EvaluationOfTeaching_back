@@ -6,5 +6,5 @@ import org.wrrrrrrry.evaluationteaching.entity.User;
 @Repository
 public interface UserMapper {
     // 根据code查询用户信息及其拥有的权限
-    public User queryUserAndAuthoritiesByCode(int code);
+    User queryUserAndAuthoritiesByCode(String code);
 }
