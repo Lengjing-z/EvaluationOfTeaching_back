@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class TeacherAnswer {
     private int id;
-    private int tttid;
-    private int qid;
-    private int valuatorid;
-    private int bevaluatorid;
+    private int tttId;
+    private int qId;
+    private int valuatorId;
+    private int beValuatorId;
     private String answer;
 }

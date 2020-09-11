@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,6 +19,7 @@ import org.wrrrrrrry.evaluationteaching.entity.Power;
 import org.wrrrrrrry.evaluationteaching.entity.User;
 import org.wrrrrrrry.evaluationteaching.mapper.UserMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
@@ -62,7 +64,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private static List<GrantedAuthority> translatePowerToGrantedAuthority(List<Power> powers){
-        return null;
+        List<GrantedAuthority> arrayList = new ArrayList();
+        powers.forEach(item->{
+            arrayList.add(new SimpleGrantedAuthority(item.getName()));
+        });
+        return arrayList;
     }
 }
 ;

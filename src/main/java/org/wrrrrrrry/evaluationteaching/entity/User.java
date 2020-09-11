@@ -9,7 +9,7 @@ public class User {
     private int id;
     private String name;
     private String password;
-    private int in_id;
+    private int inId;
     private String code;
     private String sex;
     private int age;

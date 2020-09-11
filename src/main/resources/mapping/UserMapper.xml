@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.UserMapper">
+    <resultMap id="userPower" type="org.wrrrrrrry.evaluationteaching.entity.User" autoMapping="true">
+        <id property="id" column="uid"></id>
+        <collection property="powers" resultMap="power" autoMapping="true">
+        </collection>
+    </resultMap>
+    <resultMap id="power" type="org.wrrrrrrry.evaluationteaching.entity.Power" autoMapping="true">
+        <id property="id" column="p_id"></id>
+    </resultMap>
+    <select id="queryUserAndAuthoritiesByCode" resultMap="userPower">
+        select user.ID AS uid, user.NAME, PASSWORD, IN_ID, CODE, SEX, AGE, HEIGHT, ADDR, INTR, user_power.id, U_ID, P_ID,p.id, p.NAME, IS_ROLE, P_NODE, IS_END from user
+        left join user_power on user.id = user_power.u_id
+        left join power p on user_power.p_id = p.id
+        where code=#{code}
+    </select>
 
-    <select id="queryUserAndAuthoritiesByCode" resultType="org.wrrrrrrry.evaluationteaching.entity.User"></select>
 
 </mapper>

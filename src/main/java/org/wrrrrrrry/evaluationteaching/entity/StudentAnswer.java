@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class StudentAnswer {
     private int id;
-    private int speid;
+    private int speId;
     private int sid;
     private int qid;
     private String answer;

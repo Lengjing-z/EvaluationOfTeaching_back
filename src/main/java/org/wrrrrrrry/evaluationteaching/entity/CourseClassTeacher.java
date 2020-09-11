@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class CourseClassTeacher {
     private int id;
-    private int courseid;
-    private int claid;
-    private int tid;
+    private int courseId;
+    private int claId;
+    private int tId;
 }

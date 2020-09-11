@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class TeacherToTeacher {
     private int id;
-    private int qnid;
-    private int inid;
+    private int qnId;
+    private int inId;
 }

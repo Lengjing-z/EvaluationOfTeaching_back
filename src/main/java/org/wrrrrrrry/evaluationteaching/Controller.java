@@ -14,7 +14,7 @@ public class Controller {
     public String test(@PathVariable String status){
         System.out.println(status);
         if (status.equals("query")){
-            return testService.queryUserById(1).toString();
+            return testService.queryUserById(2).toString();
         }
         return status;
     }

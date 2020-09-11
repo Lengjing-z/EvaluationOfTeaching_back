@@ -6,6 +6,6 @@ import lombok.Data;
 public class Question {
     private int id;
     private String countent;
-    private int qnid;
-    private int indexendid;
+    private int qnId;
+    private int indexEndId;
 }
