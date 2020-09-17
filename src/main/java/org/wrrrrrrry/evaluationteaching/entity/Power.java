@@ -6,7 +6,7 @@ import lombok.Data;
 public class Power {
     private int id;
     private String name;
-    private Boolean isRole;
+    private boolean isRole;
     private int pNode;
-    private Boolean isEnd;
+    private boolean isEnd;
 }

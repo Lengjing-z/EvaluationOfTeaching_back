@@ -20,7 +20,7 @@ class EvaluationTeachingApplicationTests {
     @Test
     void contextLoads() throws SQLException {
 
-        User user=userMapper.queryUserAndAuthoritiesByCode("2020100101");
+        User user=userMapper.queryUserAndAuthoritiesByCode("2020100102");
         System.out.println(user);
     }
 

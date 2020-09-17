@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -24,6 +25,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -66,7 +68,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static List<GrantedAuthority> translatePowerToGrantedAuthority(List<Power> powers){
         List<GrantedAuthority> arrayList = new ArrayList();
         powers.forEach(item->{
-            arrayList.add(new SimpleGrantedAuthority(item.getName()));
+            if(item.isRole()){
+                arrayList.add(new SimpleGrantedAuthority("ROLE_"+item.getName()));
+            }else {
+                arrayList.add(new SimpleGrantedAuthority("AUTH_"+item.getName()));
+            }
+
         });
         return arrayList;
     }
