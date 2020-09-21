@@ -11,6 +11,7 @@ import org.wrrrrrrry.evaluationteaching.service.TestService;
 public class Controller {
     @Autowired
     TestService testService;
+
     @PreAuthorize("hasRole('ROLE_teacher')")
     @RequestMapping("login/{status}")
     public String test(@PathVariable String status){
@@ -20,6 +21,7 @@ public class Controller {
         }
         return status;
     }
+
     @PreAuthorize("hasAuthority('AUTH_resetpassword')")
     @RequestMapping("test")
     public String test1(){

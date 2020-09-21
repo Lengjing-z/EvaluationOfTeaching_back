@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.UserMapper">
     <resultMap id="userPower" type="org.wrrrrrrry.evaluationteaching.entity.User">
-        <id property="id" column="uid"></id>
-        <result property="name" column="uname"></result>
-        <result property="password" column="password"></result>
-        <result property="code" column="code"></result>
+        <id property="id" column="uid"/>
+        <result property="name" column="uname"/>
+        <result property="password" column="password"/>
+        <result property="code" column="code"/>
         <collection property="powers" resultMap="power">
         </collection>
     </resultMap>
     <resultMap id="power" type="org.wrrrrrrry.evaluationteaching.entity.Power">
-        <id property="id" column="pid"></id>
-        <result property="name" column="pname"></result>
+        <id property="id" column="pid"/>
+        <result property="name" column="pname"/>
         <result property="isRole" column="IS_ROLE"/>
     </resultMap>
     <select id="queryUserAndAuthoritiesByCode" resultMap="userPower">
