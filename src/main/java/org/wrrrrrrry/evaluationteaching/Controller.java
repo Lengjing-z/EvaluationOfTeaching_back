@@ -24,6 +24,6 @@ public class Controller {
     @RequestMapping("test")
     public String test1(){
 
-        return "test";
+        return "ok";
     }
 }
