@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.AddintroMapper">
+    <insert id="insertClass" parameterType="java.util.List">
+        insert into class(name,is_public) values
+        <foreach collection="clazzes" item="clazz" separator=",">
+            (
+            #{clazz.name},
+            #{clazz.isPublic}
+            )
+        </foreach>
+    </insert>
+    <insert id="insertCourse" parameterType="java.util.List">
+        insert into course(name,is_public,is_major) values
+        <foreach collection="courses" item="course" separator=",">
+            (
+            #{course.name},
+            #{course.isPublic},
+            #{course.isMajor}
+            )
+        </foreach>
+    </insert>
+    <insert id="insertUser" parameterType="org.wrrrrrrry.evaluationteaching.entity.User" keyProperty="id" useGeneratedKeys="true">
+        insert into user(name, password, in_id, code, sex, age, height, addr, intr) values
+        <foreach collection="users" item="user" separator=",">
+            (
+            #{user.name},
+            #{user.password},
+            #{user.institute.id},
+            #{user.code},
+            #{user.sex},
+            #{user.age},
+            #{user.height},
+            #{user.addr},
+            #{user.intr}
+            )
+        </foreach>
+    </insert>
+    <insert id="insertUserPower" parameterType="java.util.List">
+            insert into user_power(u_id, p_id) values
+            <foreach collection="userPower" item="item" separator=",">
+                (
+                 #{item.uId},
+                 #{item.pId}
+                )
+            </foreach>
+    </insert>
+    <insert id="insertStudentToClass">
+            insert into class_student values
+            <foreach collection="classStudents" item="classStudent" separator=",">
+                (
+                 #{classStudent.claId},
+                 #{classStudent.stId}
+                )
+            </foreach>
+    </insert>
+</mapper>

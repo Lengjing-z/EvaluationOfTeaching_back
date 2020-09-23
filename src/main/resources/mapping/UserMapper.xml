@@ -15,7 +15,7 @@
         <result property="isRole" column="IS_ROLE"/>
     </resultMap>
     <select id="queryUserAndAuthoritiesByCode" resultMap="userPower">
-        select user.id AS uid, user.NAME as uname, PASSWORD, IN_ID, CODE, SEX, AGE, HEIGHT, ADDR, INTR,
+        select user.id AS uid, user.NAME as uname, PASSWORD, CODE, SEX, AGE, HEIGHT, ADDR, INTR,
                user_power.id, U_ID, P_ID,
                p.id as pid, p.NAME as pname, IS_ROLE, P_NODE, IS_END
         from user

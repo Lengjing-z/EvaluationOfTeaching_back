@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.wrrrrrrry.evaluationteaching.entity.User;
@@ -31,8 +32,8 @@ public class Index {
         return indexService.queryMyInfo(getUserInfo().getUsername());
     }
 
-    public org.springframework.security.core.userdetails.User getUserInfo(){
-        return (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+    public UserDetails getUserInfo(){
+        return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.PublicMessageMapper">
+    <select id="selectStudentClassByCode" resultType="org.wrrrrrrry.evaluationteaching.entity.Clazz">
+        select c.id,c.name from user
+        left join class_student cs on user.id = cs.s_id
+        left join class c on cs.cla_id = c.id
+        where code = #{code}
+    </select>
+    <select id="selectTeacherClassByCode" resultType="org.wrrrrrrry.evaluationteaching.entity.Clazz">
+        select c.id,c.name from user
+        left join course_class_teacher cct on user.id = cct.t_id
+        left join class c on cct.cla_id = c.id
+        where code = #{code}
+    </select>
+    <select id="selectStudentCourseByCode" resultType="org.wrrrrrrry.evaluationteaching.entity.Course">
+        select c.id,c.name from user
+        left join class_student cs on user.id = cs.s_id
+        left join course_class_teacher cct on user.id = cct.t_id
+        left join course c on cct.course_id = c.id
+        where code = #{code}
+    </select>
+    <select id="selectTeacherCourseByCode" resultType="org.wrrrrrrry.evaluationteaching.entity.Course">
+        select * from user
+        left join course_class_teacher cct on user.id = cct.t_id
+        left join course c on cct.course_id = c.id
+        where code = #{code}
+    </select>
+    <select id="selectPowerAll" resultType="org.wrrrrrrry.evaluationteaching.entity.Power">
+        select id, name, is_role, p_node, is_end from power
+    </select>
+    <select id="selectClassByName" resultType="org.wrrrrrrry.evaluationteaching.entity.Clazz">
+        select id, name, is_public from class
+        where name like #{name}
+    </select>
+    <select id="selectStudentByCode" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
+        select user.id, user.name, in_id, code, sex, age, height, addr, intr from user
+        left join user_power up on user.id = up.u_id
+        left join power p on up.p_id = p.id
+        where code like #{code}
+        and p.name = 'student'
+    </select>
+    <select id="selectCourseByName" resultType="org.wrrrrrrry.evaluationteaching.entity.Course">
+        select id, name, is_major, is_public from course
+        where name like #{name}
+    </select>
+</mapper>

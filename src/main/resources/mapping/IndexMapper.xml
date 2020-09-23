@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.IndexMapper">
-    <select id="selectUserInfoByCode" resultType="org.wrrrrrrry.evaluationteaching.entity.User"></select>
+    <resultMap id="user" type="org.wrrrrrrry.evaluationteaching.entity.User" autoMapping="true">
+        <id property="id" column="uid"></id>
+        <result property="name" column="uname"/>
+        <collection property="institute" resultMap="institute"/>
+    </resultMap>
+    <resultMap id="institute" type="org.wrrrrrrry.evaluationteaching.entity.Institute">
+        <id property="id" column="iid"/>
+        <result property="name" column="iname"/>
+    </resultMap>
+    <select id="selectUserInfoByCode" resultMap="user">
+        select user.id as uid ,user.name as uname,password,code,sex,age,height,addr,intr,i.id as iid,i.name as iname from user
+        left join institute i on user.in_id = i.id
+        where code = #{code}
+    </select>
 </mapper>
