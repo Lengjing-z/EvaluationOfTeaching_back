@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.wrrrrrrry.evaluationteaching.entity.User;
+import org.wrrrrrrry.evaluationteaching.entity.UserPower;
 import org.wrrrrrrry.evaluationteaching.service.SecurityService;
+
+import java.util.List;
 
 @RestController
 public class Security {
@@ -21,6 +24,18 @@ public class Security {
     public int modifyMyInfo(@RequestBody User user){
         user.setCode(getUserInfo().getUsername());
         return securityService.modifyMyInfo(user);
+    }
+    @RequestMapping("/admin/userPower/all")
+    public List<UserPower> getUserPowerAll(){
+        return securityService.queryUserPowerAll();
+    }
+    @RequestMapping("/admin/power/add")
+    public int powerAdd(@RequestBody List<UserPower> userPowers){
+        return securityService.powerAdd(userPowers);
+    }
+    @RequestMapping("/admin/power/del")
+    public int powerDel(@RequestBody List<UserPower> userPowers){
+        return securityService.powerDel(userPowers);
     }
 
     public UserDetails getUserInfo(){

@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.SecurityMapper">
+    <insert id="powerAdd">
+        insert into user_power(u_id, p_id) values
+        <foreach collection="userPowers" item="userPower" separator=",">
+            (
+                #{userPower.uId},
+                #{userPower.pId}
+            )
+        </foreach>
+    </insert>
     <update id="updatePasswordByCode">
         update user set password='123456' where code=#{code}
     </update>
@@ -10,4 +19,13 @@
                         intr=#{user.intr}
         where code =#{user.code}
     </update>
+    <delete id="powerDel">
+        delete from user_power where id in
+        <foreach collection="userPowers" item="userPower" open="(" close=")" separator=",">
+            #{userPower.id}
+        </foreach>
+    </delete>
+    <select id="selectUserPowerAll" resultType="org.wrrrrrrry.evaluationteaching.entity.UserPower">
+        select id, u_id, p_id from user_power
+    </select>
 </mapper>
