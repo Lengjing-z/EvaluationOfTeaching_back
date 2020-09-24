@@ -30,4 +30,8 @@ public class AddIntro {
     public int insertStudentToClass(@RequestBody List<ClassStudent> classStudents){
         return addintroService.insertStudentToClass(classStudents);
     }
+    @RequestMapping("/admin/insertInfo/segment/course/submit")
+    public int insertTeacherToCourse(@RequestBody List<CourseClassTeacher> courseClassTeachers){
+        return addintroService.insertTeacherToCourse(courseClassTeachers);
+    }
 }

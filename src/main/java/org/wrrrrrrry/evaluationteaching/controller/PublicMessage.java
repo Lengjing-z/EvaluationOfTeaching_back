@@ -51,6 +51,10 @@ public class PublicMessage {
     public List<Course> getCourseByname(@RequestBody String name){
         return publicMessageService.queryCourseByName(name);
     }
+    @RequestMapping("/admin/userInfo")
+    public List<User> getUserByCode(@RequestBody String code){
+        return publicMessageService.queryUserByCode(code);
+    }
 
     public UserDetails getUserInfo(){
         return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

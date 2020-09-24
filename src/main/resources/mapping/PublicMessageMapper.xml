@@ -44,4 +44,25 @@
         select id, name, is_major, is_public from course
         where name like #{name}
     </select>
+    <resultMap id="userInfo" type="org.wrrrrrrry.evaluationteaching.entity.User">
+        <id property="id" column="uid"/>
+        <result property="name" column="uname"/>
+        <result property="password" column="password"/>
+        <result property="code" column="code"/>
+        <result property="sex" column="sex"/>
+        <result property="age" column="age"/>
+        <result property="height" column="height"/>
+        <result property="addr" column="addr"/>
+        <result property="intr" column="intr"/>
+        <collection property="institute" resultMap="institute"/>
+    </resultMap>
+    <resultMap id="institute" type="org.wrrrrrrry.evaluationteaching.entity.Institute">
+        <id property="id" column="iid"/>
+        <result property="name" column="iname"/>
+    </resultMap>
+    <select id="selectUserByCode" resultMap="userInfo">
+        select user.id as uid, user.name as uname, password, i.id as iid,i.name as iname, code, sex, age, height, addr, intr from user
+        left join institute i on user.in_id = i.id
+        where code like #{code}
+    </select>
 </mapper>

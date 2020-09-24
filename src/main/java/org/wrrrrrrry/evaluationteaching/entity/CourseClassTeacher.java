@@ -7,5 +7,5 @@ public class CourseClassTeacher {
     private int id;
     private int courseId;
     private int claId;
-    private int tId;
+    private int thId;
 }

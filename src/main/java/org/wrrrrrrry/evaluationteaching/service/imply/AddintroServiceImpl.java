@@ -46,4 +46,10 @@ public class AddintroServiceImpl implements AddintroService {
 
         return addintroMapper.insertStudentToClass(classStudents);
     }
+
+    @Override
+    public int insertTeacherToCourse(List<CourseClassTeacher> courseClassTeachers) {
+
+        return addintroMapper.insertTeacherToCourse(courseClassTeachers);
+    }
 }

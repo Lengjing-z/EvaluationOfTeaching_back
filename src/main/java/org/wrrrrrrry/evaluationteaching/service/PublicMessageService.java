@@ -23,4 +23,6 @@ public interface PublicMessageService {
     List<User> queryStudentByCode(String code);
 
     List<Course> queryCourseByName(String name);
+
+    List<User> queryUserByCode(String code);
 }

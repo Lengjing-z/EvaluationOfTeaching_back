@@ -1,9 +1,6 @@
 package org.wrrrrrrry.evaluationteaching.service;
 
-import org.wrrrrrrry.evaluationteaching.entity.ClassStudent;
-import org.wrrrrrrry.evaluationteaching.entity.Clazz;
-import org.wrrrrrrry.evaluationteaching.entity.Course;
-import org.wrrrrrrry.evaluationteaching.entity.User;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 
 import java.util.List;
 
@@ -15,4 +12,6 @@ public interface AddintroService {
     int insertUser(List<User> users);
 
     int insertStudentToClass(List<ClassStudent> classStudents);
+
+    int insertTeacherToCourse(List<CourseClassTeacher> courseClassTeachers);
 }

@@ -26,4 +26,6 @@ public interface PublicMessageMapper {
     List<User> selectStudentByCode(@Param("code") String code);
 
     List<Course> selectCourseByName(@Param("name") String name);
+
+    List<User> selectUserByCode(@Param("code") String code);
 }

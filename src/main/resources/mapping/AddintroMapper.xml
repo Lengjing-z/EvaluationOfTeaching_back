@@ -6,7 +6,7 @@
         <foreach collection="clazzes" item="clazz" separator=",">
             (
             #{clazz.name},
-            #{clazz.isPublic}
+            #{clazz.pub}
             )
         </foreach>
     </insert>
@@ -15,8 +15,8 @@
         <foreach collection="courses" item="course" separator=",">
             (
             #{course.name},
-            #{course.isPublic},
-            #{course.isMajor}
+            #{course.pub},
+            #{course.major}
             )
         </foreach>
     </insert>
@@ -51,6 +51,16 @@
                 (
                  #{classStudent.claId},
                  #{classStudent.stId}
+                )
+            </foreach>
+    </insert>
+    <insert id="insertTeacherToCourse">
+            insert into course_class_teacher(course_id, cla_id, t_id) VALUES
+            <foreach collection="courseClassTeachers" item="courseClassTeacher" separator=",">
+                (
+                 #{courseClassTeacher.courseId},
+                 #{courseClassTeacher.claId},
+                 #{courseClassTeacher.thId}
                 )
             </foreach>
     </insert>

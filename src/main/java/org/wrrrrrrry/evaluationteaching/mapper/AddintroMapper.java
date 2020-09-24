@@ -2,10 +2,7 @@ package org.wrrrrrrry.evaluationteaching.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.wrrrrrrry.evaluationteaching.entity.ClassStudent;
-import org.wrrrrrrry.evaluationteaching.entity.Clazz;
-import org.wrrrrrrry.evaluationteaching.entity.Course;
-import org.wrrrrrrry.evaluationteaching.entity.User;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 
 import java.util.List;
 
@@ -20,4 +17,6 @@ public interface AddintroMapper {
     void insertUserPower(@Param("userPower") List list);
 
     int insertStudentToClass(@Param("classStudents") List<ClassStudent> classStudents);
+
+    int insertTeacherToCourse(@Param("courseClassTeachers") List<CourseClassTeacher> courseClassTeachers);
 }

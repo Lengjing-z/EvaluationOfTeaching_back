@@ -55,4 +55,10 @@ public class PublicMessageServiceImpl implements PublicMessageService {
     public List<Course> queryCourseByName(String name) {
         return publicMessageMapper.selectCourseByName("%"+name+"%");
     }
+
+    @Override
+    public List<User> queryUserByCode(String code) {
+
+        return publicMessageMapper.selectUserByCode("%"+code+"%");
+    }
 }

@@ -6,5 +6,5 @@ import lombok.Data;
 public class Clazz {
     private int id;
     private String name;
-    private boolean isPublic;
+    private boolean pub;
 }

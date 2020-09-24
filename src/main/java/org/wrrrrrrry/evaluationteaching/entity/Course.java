@@ -6,6 +6,6 @@ import lombok.Data;
 public class Course {
     private int id;
     private String name;
-    private boolean isMajor;
-    private boolean isPublic;
+    private boolean major;
+    private boolean pub;
 }
