@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.IndexMapper">
-    <resultMap id="user" type="org.wrrrrrrry.evaluationteaching.entity.User" autoMapping="true">
+    <resultMap id="user" type="org.wrrrrrrry.evaluationteaching.entity.User">
         <id property="id" column="uid"></id>
         <result property="name" column="uname"/>
+        <result property="password" column="password"/>
+        <result property="code" column="code"/>
+        <result property="sex" column="sex"/>
+        <result property="age" column="age"/>
+        <result property="height" column="height"/>
+        <result property="addr" column="addr"/>
+        <result property="intr" column="intr"/>
         <collection property="institute" resultMap="institute"/>
     </resultMap>
     <resultMap id="institute" type="org.wrrrrrrry.evaluationteaching.entity.Institute">

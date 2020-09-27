@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.ToEMapper">
+    <select id="selectStudentFinishedQuestionnaire"
+            resultType="org.wrrrrrrry.evaluationteaching.controller.Questionnaire">
+        select qn.id, title, index_root_id,is_finished from questionnaire qn
+        left join studentToteacher sT on qn.id = sT.qn_id
+        left join message m on sT.id = m.stt_id
+        left join user u on m.u_id = u.id
+        where code = #{code} and is_finished = true
+    </select>
+    <select id="selectTeacherFinishedQuestionnaire"
+            resultType="org.wrrrrrrry.evaluationteaching.controller.Questionnaire">
+        select qn.id, title, index_root_id,is_finished from questionnaire qn
+        left join teacherToteacher tT on qn.id = tT.qn_id
+        left join message m on tT.id = m.ttt_id
+        left join user u on m.u_id = u.id
+        where code = #{code} and is_finished = true
+    </select>
+    <select id="selectFinishedDetailById" resultType="java.util.Map">
+        select * from question
+        left join questionnaire q on question.qn_id = q.id
+        left join
+    </select>
+</mapper>

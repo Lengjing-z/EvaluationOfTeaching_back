@@ -40,23 +40,23 @@ public class PublicMessage {
         return publicMessageService.queryPowerAll();
     }
     @RequestMapping("/admin/class/query")
-    public List<Clazz> getClassByName(@RequestBody String name){
+    public List<Clazz> getClassByName(String name){
         return publicMessageService.queryClassByName(name);
     }
     @RequestMapping("/admin/student/query")
-    public List<User> getStudentByCode(@RequestBody String code){
+    public List<User> getStudentByCode(String code){
         return publicMessageService.queryStudentByCode(code);
     }
     @RequestMapping("/admin/course/query")
-    public List<Course> getCourseByname(@RequestBody String name){
+    public List<Course> getCourseByname(String name){
         return publicMessageService.queryCourseByName(name);
     }
     @RequestMapping("/admin/userInfo")
-    public List<User> getUserByCode(@RequestBody String code){
+    public List<User> getUserByCode(String code){
         return publicMessageService.queryUserByCode(code);
     }
     @RequestMapping("/admin/user/query")
-    public List<User> getUserByCodeFun(@RequestBody String code){
+    public List<User> getUserByCodeFun(String code){
         return publicMessageService.queryUserByCode(code);
     }
 
