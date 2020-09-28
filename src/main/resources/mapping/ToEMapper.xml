@@ -1,25 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.ToEMapper">
-    <select id="selectStudentFinishedQuestionnaire"
-            resultType="org.wrrrrrrry.evaluationteaching.controller.Questionnaire">
-        select qn.id, title, index_root_id,is_finished from questionnaire qn
+    <resultMap id="questionnaire" type="org.wrrrrrrry.evaluationteaching.entity.Questionnaire">
+        <id property="id" column="qnid"/>
+        <result property="title" column="title"/>
+        <result property="indexRootId" column="index_root_id"/>
+        <collection property="beEvaUsers" resultMap="beEvauser"/>
+        <collection property="evaUsers" resultMap="evauser"/>
+    </resultMap>
+    <resultMap id="beEvauser" type="org.wrrrrrrry.evaluationteaching.entity.User">
+        <id property="id" column="beEvaid"/>
+        <result property="name" column="beEvaname"/>
+        <result property="code" column="beEvacode"/>
+        <collection property="institute" resultMap="beEvainstitute"/>
+    </resultMap>
+    <resultMap id="evauser" type="org.wrrrrrrry.evaluationteaching.entity.User">
+        <id property="id" column="evaid"/>
+        <result property="name" column="evaname"/>
+        <result property="code" column="evacode"/>
+        <collection property="institute" resultMap="evainstitute"/>
+    </resultMap>
+    <resultMap id="beEvainstitute" type="org.wrrrrrrry.evaluationteaching.entity.Institute">
+        <id property="id" column="beEvainid"/>
+    </resultMap>
+    <resultMap id="evainstitute" type="org.wrrrrrrry.evaluationteaching.entity.Institute">
+        <id property="id" column="evainid"/>
+    </resultMap>
+    <select id="selectStudentFinishedQuestionnaire" resultMap="questionnaire">
+        select qn.id as qnid, title, index_root_id,
+               u.id as beEvaid, u.name as beEvaname, u.in_id as beEvainid, u.code as beEvacode,
+               u1.id as evaid, u1.name as evaname, u1.in_id as evainid, u1.code as evacode
+        from questionnaire qn
         left join studentToteacher sT on qn.id = sT.qn_id
         left join message m on sT.id = m.stt_id
-        left join user u on m.u_id = u.id
+        left join user u on m.target_id = u.id
+        left join user u1 on m.u_id = u1.id
         where code = #{code} and is_finished = true
     </select>
-    <select id="selectTeacherFinishedQuestionnaire"
-            resultType="org.wrrrrrrry.evaluationteaching.controller.Questionnaire">
-        select qn.id, title, index_root_id,is_finished from questionnaire qn
+    <select id="selectTeacherFinishedQuestionnaire" resultMap="questionnaire">
+        select qn.id as qnid, title, index_root_id,
+               u.id as beEvaid, u.name as beEvaname, u.in_id as beEvainid, u.code as beEvacode,
+               u1.id as evaid, u1.name as evaname, u1.in_id as evainid, u1.code as evacode
+        from questionnaire qn
         left join teacherToteacher tT on qn.id = tT.qn_id
         left join message m on tT.id = m.ttt_id
-        left join user u on m.u_id = u.id
+        left join user u on m.target_id = u.id
+        left join user u1 on m.u_id = u1.id
         where code = #{code} and is_finished = true
     </select>
     <select id="selectFinishedDetailById" resultType="java.util.Map">
-        select * from question
+        select title, answer from question
         left join questionnaire q on question.qn_id = q.id
-        left join
+        left join student_answer sa on question.id = sa.q_id
+        where question.id=#{id}
     </select>
 </mapper>

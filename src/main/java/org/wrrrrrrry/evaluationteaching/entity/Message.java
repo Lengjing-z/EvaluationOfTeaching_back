@@ -11,4 +11,5 @@ public class Message {
     private String context;
     private String startedTime;
     private boolean isRead;
+    private boolean isFinished;
 }

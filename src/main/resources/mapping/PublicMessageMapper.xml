@@ -21,9 +21,9 @@
         where code = #{code}
     </select>
     <select id="selectTeacherCourseByCode" resultType="org.wrrrrrrry.evaluationteaching.entity.Course">
-        select * from user
-        left join course_class_teacher cct on user.id = cct.t_id
-        left join course c on cct.course_id = c.id
+        select c.id, c.name, is_major, is_public from course c
+        left join course_class_teacher cct on c.id = cct.course_id
+        left join user u on cct.t_id = u.id
         where code = #{code}
     </select>
     <select id="selectPowerAll" resultType="org.wrrrrrrry.evaluationteaching.entity.Power">
