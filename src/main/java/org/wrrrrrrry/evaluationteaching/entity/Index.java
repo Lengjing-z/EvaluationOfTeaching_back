@@ -2,11 +2,13 @@ package org.wrrrrrrry.evaluationteaching.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Index {
     private int id;
-    private int pNode;
+    private Integer paNode ;
     private String name;
     private double rate;
-    private boolean isEnd;
+    private boolean end;
 }

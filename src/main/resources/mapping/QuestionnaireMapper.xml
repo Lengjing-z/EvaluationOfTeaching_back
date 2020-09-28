@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.QuestionnaireMapper">
+    <insert id="addIndicator">
+        insert into `index`(id, p_node, name, rate, is_end) VALUES 
+        <foreach collection="list" item="item" separator=",">
+            (
+             #{item.id},
+             #{item.paNode},
+             #{item.name},
+             #{item.rate},
+             #{item.end}
+            )
+        </foreach>
+    </insert>
+    <delete id="deleteIndicator">
+        delete from `index` where id = #{indicator.id}
+    </delete>
+    <select id="queryCurrentMaxId" resultType="java.lang.Integer">
+        select max(id) from `index`
+    </select>
+    <select id="queryAllIndicator" resultType="org.wrrrrrrry.evaluationteaching.entity.Index">
+        select id, p_node, name, rate, is_end from `index` where p_node is null
+    </select>
+    <select id="queryIndicatorsByPaNode" resultType="org.wrrrrrrry.evaluationteaching.entity.Index">
+        select id, p_node, name, rate, is_end from `index` where p_node = #{parent.id}
+    </select>
+
+
+</mapper>
