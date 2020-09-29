@@ -2,7 +2,9 @@ package org.wrrrrrrry.evaluationteaching.service.imply;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.wrrrrrrry.evaluationteaching.entity.Course;
 import org.wrrrrrrry.evaluationteaching.entity.Index;
+import org.wrrrrrrry.evaluationteaching.entity.Institute;
 import org.wrrrrrrry.evaluationteaching.mapper.QuestionnaireMapper;
 import org.wrrrrrrry.evaluationteaching.service.QuestionnaireService;
 
@@ -30,6 +32,24 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     @Override
     public List<Index> queryQuestionnaireDetail(Index index) {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public int deleteQuestionnaire(Index index) {
+        // Todo
+        return 0;
+    }
+
+    @Override
+    public Object releaseQuestionnaireInstitute(int questionnaireId, List<Institute> institutes) {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public Object releaseQuestionnaireCourse(int questionnaireId, List<Course> courses) {
         // Todo
         return null;
     }

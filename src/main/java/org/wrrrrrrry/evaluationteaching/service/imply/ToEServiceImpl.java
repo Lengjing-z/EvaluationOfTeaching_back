@@ -13,11 +13,12 @@ import java.util.Map;
 public class ToEServiceImpl implements ToEService {
     @Autowired
     ToEMapper toEMapper;
+
     @Override
-    public List<Questionnaire> queryFinishedQuestionnaire(String code,boolean isStudent) {
-        if (isStudent){
+    public List<Questionnaire> queryFinishedQuestionnaire(String code, boolean isStudent) {
+        if (isStudent) {
             return toEMapper.selectStudentFinishedQuestionnaire(code);
-        }else {
+        } else {
             return toEMapper.selectTeacherFinishedQuestionnaire(code);
         }
 
