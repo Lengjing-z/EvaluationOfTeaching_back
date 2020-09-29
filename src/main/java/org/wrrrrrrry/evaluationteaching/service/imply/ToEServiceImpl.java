@@ -28,4 +28,28 @@ public class ToEServiceImpl implements ToEService {
 
         return toEMapper.selectFinishedDetailById(id);
     }
+
+    @Override
+    public Object getFinishedCourse() {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public Object getFinishedCourseDetail(int studentId, int teacherId) {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public Object getFinishedInstitute() {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public Object getFinishedInstituteDetail(int reviewerId, int beReviewdId) {
+        // Todo
+        return null;
+    }
 }
