@@ -22,6 +22,16 @@ public class Questionnaire {
         return questionnaireService.createQuestionnaire(questionnaire);
     }
 
+    @RequestMapping("questionnaire/all")
+    public List<Index> queryAllQuestionnaire() {
+        return questionnaireService.allQuestionnaire();
+    }
+
+    @RequestMapping("questionnaire/detail")
+    public List<Index> queryQuestionnaireDetail(@RequestBody Index index) {
+        return questionnaireService.queryQuestionnaireDetail(index);
+    }
+
     @RequestMapping("indicator/create")
     public int createIndicator(@RequestBody List<Index> indexList){
         return questionnaireService.createIndicator(indexList);

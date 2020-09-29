@@ -8,10 +8,15 @@ import java.util.Map;
 public interface QuestionnaireService {
     boolean createQuestionnaire(Map questionnaire);
 
+    List<Index> allQuestionnaire();
+
+    List<Index> queryQuestionnaireDetail(Index index);
+
     int createIndicator(List<Index> indexList);
 
 
     int deleteIndicator(Index index);
+
 
     List<Index> allIndicator();
 

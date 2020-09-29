@@ -22,6 +22,18 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         return false;
     }
 
+    @Override
+    public List<Index> allQuestionnaire() {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public List<Index> queryQuestionnaireDetail(Index index) {
+        // Todo
+        return null;
+    }
+
     public int createIndicator(List<Index> indexList) {
         Integer maxId = questionnaireMapper.queryCurrentMaxId();
         indexList.forEach(item->{
