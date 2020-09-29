@@ -11,6 +11,8 @@ public interface ToEService {
 
     Map<String, String> queryFinishedDetailById(int id);
 
+    Object getStudentEvaluationDetail(int studentId);
+
     Object getFinishedCourse();
 
     Object getFinishedCourseDetail(int studentId, int teacherId);

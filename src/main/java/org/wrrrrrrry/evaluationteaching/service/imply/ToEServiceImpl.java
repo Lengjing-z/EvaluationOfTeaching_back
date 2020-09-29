@@ -31,6 +31,12 @@ public class ToEServiceImpl implements ToEService {
     }
 
     @Override
+    public Object getStudentEvaluationDetail(int studentId) {
+        // Todo
+        return null;
+    }
+
+    @Override
     public Object getFinishedCourse() {
         // Todo
         return null;

@@ -19,6 +19,9 @@ public interface QuestionnaireService {
     Object releaseQuestionnaireInstitute(int questionnaireId, List<Institute> institutes);
 
     Object releaseQuestionnaireCourse(int questionnaireId, List<Course> courses);
+
+    Object getStudentQuestionnaireDetail(int questionnaireId);
+
     int createIndicator(List<Index> indexList);
 
 

@@ -49,6 +49,11 @@ public class Questionnaire {
         return questionnaireService.releaseQuestionnaireCourse(questionnaireId, courses);
     }
 
+    @RequestMapping("student/questionnaire/detail")
+    public Object getStudentQuestionnaireDetail(int questionnaireId) {
+        return questionnaireService.getStudentQuestionnaireDetail(questionnaireId);
+    }
+
     @RequestMapping("indicator/create")
     public int createIndicator(@RequestBody List<Index> indexList) {
         return questionnaireService.createIndicator(indexList);
