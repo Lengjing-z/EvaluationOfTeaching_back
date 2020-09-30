@@ -2,7 +2,8 @@ package org.wrrrrrrry.evaluationteaching.service.imply;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.wrrrrrrry.evaluationteaching.controller.Questionnaire;
+import org.wrrrrrrry.evaluationteaching.entity.Question;
+import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
 import org.wrrrrrrry.evaluationteaching.mapper.ToEMapper;
 import org.wrrrrrrry.evaluationteaching.service.ToEService;
 
@@ -24,8 +25,31 @@ public class ToEServiceImpl implements ToEService {
     }
 
     @Override
-    public Map<String, String> queryFinishedDetailById(int id) {
+    public List<Map<String, String>> queryFinishedDetailById(int id,boolean isStudent) {
+        if (isStudent){
+            return toEMapper.selectStudentFinishedDetailById(id);
+        }else {
+            return toEMapper.selectTeacherFinishedDetailById(id);
+        }
+    }
 
-        return toEMapper.selectFinishedDetailById(id);
+    @Override
+    public List<Questionnaire> queryStudentProgressingQuestionnaire(String code) {
+        return toEMapper.selectStudentProgressingQuestionnaire(code);
+    }
+
+    @Override
+    public List<Questionnaire> queryTeacherProgressingQuestionnaire(String code) {
+        return toEMapper.selectTeacherProgressingQuestionnaire(code);
+    }
+
+    @Override
+    public List<Question> queryStudentProgressingDetailById(int id) {
+        return toEMapper.selectStudentProgressingDetailById(id);
+    }
+
+    @Override
+    public List<Question> queryTeacherProgressingDetailById(int id) {
+        return toEMapper.selectTeacherProgressingDetailById(id);
     }
 }

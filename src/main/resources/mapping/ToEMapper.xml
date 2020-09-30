@@ -35,7 +35,7 @@
         left join message m on sT.id = m.stt_id
         left join user u on m.target_id = u.id
         left join user u1 on m.u_id = u1.id
-        where code = #{code} and is_finished = true
+        where u1.code = #{code} and is_finished = true
     </select>
     <select id="selectTeacherFinishedQuestionnaire" resultMap="questionnaire">
         select qn.id as qnid, title, index_root_id,
@@ -46,12 +46,44 @@
         left join message m on tT.id = m.ttt_id
         left join user u on m.target_id = u.id
         left join user u1 on m.u_id = u1.id
-        where code = #{code} and is_finished = true
+        where u1.code = #{code} and is_finished = true
     </select>
-    <select id="selectFinishedDetailById" resultType="java.util.Map">
-        select title, answer from question
+    <select id="selectStudentFinishedDetailById" resultType="java.util.Map">
+        select content as content, answer as answer from question
         left join questionnaire q on question.qn_id = q.id
         left join student_answer sa on question.id = sa.q_id
-        where question.id=#{id}
+        where q.id=#{id}
     </select>
+    <select id="selectTeacherFinishedDetailById" resultType="java.util.Map">
+        select content as content, answer as answer from question
+        left join questionnaire q on question.qn_id = q.id
+        left join teacher_answer ta on question.id = ta.q_id
+        where q.id=#{id}
+    </select>
+    <select id="selectStudentProgressingQuestionnaire" resultMap="questionnaire">
+        select qn.id as qnid, title, index_root_id,
+               u.id as beEvaid, u.name as beEvaname, u.in_id as beEvainid, u.code as beEvacode,
+               u1.id as evaid, u1.name as evaname, u1.in_id as evainid, u1.code as evacode
+        from questionnaire qn
+        left join studentToteacher sT on qn.id = sT.qn_id
+        left join message m on sT.id = m.stt_id
+        left join user u on m.target_id = u.id
+        left join user u1 on m.u_id = u1.id
+        where u1.code = #{code} and is_finished = false
+    </select>
+    <select id="selectTeacherProgressingQuestionnaire" resultMap="questionnaire">
+        select qn.id as qnid, title, index_root_id,
+               u.id as beEvaid, u.name as beEvaname, u.in_id as beEvainid, u.code as beEvacode,
+               u1.id as evaid, u1.name as evaname, u1.in_id as evainid, u1.code as evacode
+        from questionnaire qn
+        left join teacherToteacher tT on qn.id = tT.qn_id
+        left join message m on tT.id = m.ttt_id
+        left join user u on m.target_id = u.id
+        left join user u1 on m.u_id = u1.id
+        where u1.code = #{code} and is_finished = false
+    </select>
+    <select id="selectStudentProgressingDetailById"
+            resultType="org.wrrrrrrry.evaluationteaching.entity.Question"></select>
+    <select id="selectTeacherProgressingDetailById"
+            resultType="org.wrrrrrrry.evaluationteaching.entity.Question"></select>
 </mapper>
