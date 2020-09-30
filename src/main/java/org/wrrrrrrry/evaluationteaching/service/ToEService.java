@@ -19,4 +19,14 @@ public interface ToEService {
     List<Question> queryStudentProgressingDetailById(int id);
 
     List<Question> queryTeacherProgressingDetailById(int id);
+
+    Object getStudentEvaluationDetail(int studentId);
+
+    Object getFinishedCourse();
+
+    Object getFinishedCourseDetail(int studentId, int teacherId);
+
+    Object getFinishedInstitute();
+
+    Object getFinishedInstituteDetail(int reviewerId, int beReviewdId);
 }

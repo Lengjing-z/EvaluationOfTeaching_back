@@ -14,11 +14,12 @@ import java.util.Map;
 public class ToEServiceImpl implements ToEService {
     @Autowired
     ToEMapper toEMapper;
+
     @Override
-    public List<Questionnaire> queryFinishedQuestionnaire(String code,boolean isStudent) {
-        if (isStudent){
+    public List<Questionnaire> queryFinishedQuestionnaire(String code, boolean isStudent) {
+        if (isStudent) {
             return toEMapper.selectStudentFinishedQuestionnaire(code);
-        }else {
+        } else {
             return toEMapper.selectTeacherFinishedQuestionnaire(code);
         }
 
@@ -51,5 +52,35 @@ public class ToEServiceImpl implements ToEService {
     @Override
     public List<Question> queryTeacherProgressingDetailById(int id) {
         return toEMapper.selectTeacherProgressingDetailById(id);
+    }
+
+    @Override
+    public Object getStudentEvaluationDetail(int studentId) {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public Object getFinishedCourse() {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public Object getFinishedCourseDetail(int studentId, int teacherId) {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public Object getFinishedInstitute() {
+        // Todo
+        return null;
+    }
+
+    @Override
+    public Object getFinishedInstituteDetail(int reviewerId, int beReviewdId) {
+        // Todo
+        return null;
     }
 }
