@@ -45,13 +45,6 @@ public class ToE {
     }
 
     // Todo
-    // add /admin prefix
-    @RequestMapping("/evaluation/student/detail")
-    public Object getStudentEvaluationDetail(int studentId) {
-        return toEService.getStudentEvaluationDetail(studentId);
-    }
-
-    // Todo
     // add </admin> prefix to the following 4 request mapping
     // mapping one
     @RequestMapping("/beEvaluation/finished/course")

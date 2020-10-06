@@ -37,4 +37,9 @@ public class SecurityServiceImpl implements SecurityService {
     public List<UserPower> queryUserPowerAll() {
         return securityMapper.selectUserPowerAll();
     }
+
+    @Override
+    public List<UserPower> queryUSerPowerById(UserPower userPower) {
+        return securityMapper.selectUserPowerById(userPower);
+    }
 }

@@ -2,6 +2,7 @@ package org.wrrrrrrry.evaluationteaching.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.wrrrrrrry.evaluationteaching.entity.Power;
 import org.wrrrrrrry.evaluationteaching.entity.User;
 import org.wrrrrrrry.evaluationteaching.entity.UserPower;
 
@@ -18,4 +19,6 @@ public interface SecurityMapper {
     int powerDel(@Param("userPowers") List<UserPower> userPowers);
 
     List<UserPower> selectUserPowerAll();
+
+    List<UserPower> selectUserPowerById(@Param("condition") UserPower condition);
 }

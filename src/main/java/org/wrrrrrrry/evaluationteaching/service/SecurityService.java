@@ -15,4 +15,6 @@ public interface SecurityService {
     int powerDel(List<UserPower> userPowers);
 
     List<UserPower> queryUserPowerAll();
+
+    List<UserPower> queryUSerPowerById(UserPower userPower);
 }
