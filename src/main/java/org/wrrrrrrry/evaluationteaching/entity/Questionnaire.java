@@ -11,4 +11,5 @@ public class Questionnaire {
     private int indexRootId;
     private List<User> beEvaUsers;
     private List<User> evaUsers;
+    private List<Question> questions;
 }

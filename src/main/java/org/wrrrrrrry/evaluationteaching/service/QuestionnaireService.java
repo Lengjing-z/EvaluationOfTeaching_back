@@ -1,22 +1,20 @@
 package org.wrrrrrrry.evaluationteaching.service;
 
-import org.wrrrrrrry.evaluationteaching.entity.Course;
-import org.wrrrrrrry.evaluationteaching.entity.Index;
-import org.wrrrrrrry.evaluationteaching.entity.Institute;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 
 import java.util.List;
 import java.util.Map;
 
 public interface QuestionnaireService {
-    boolean createQuestionnaire(Map questionnaire);
+    boolean createQuestionnaire(Questionnaire questionnaire);
 
-    List<Index> allQuestionnaire();
+    List<Questionnaire> allQuestionnaire(String start, String length);
 
-    List<Index> queryQuestionnaireDetail(Index index);
+    Map<String, Object> queryQuestionnaireDetail(Integer qnId);
 
-    int deleteQuestionnaire(Index index);
+    int deleteQuestionnaire(Integer index);
 
-    Object releaseQuestionnaireInstitute(int questionnaireId, List<Institute> institutes);
+    boolean releaseQuestionnaireInstitute(List<TeacherToTeacher> ttts);
 
     Object releaseQuestionnaireCourse(int questionnaireId, List<Course> courses);
 
@@ -31,5 +29,5 @@ public interface QuestionnaireService {
     List<Index> allIndicator();
 
 
-    List<Index> queryDetail(Index index);
+    List<Index> queryIndicatorDetail(Index index);
 }
