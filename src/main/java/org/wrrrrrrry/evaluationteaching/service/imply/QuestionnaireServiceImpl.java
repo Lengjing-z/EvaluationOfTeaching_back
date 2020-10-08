@@ -59,15 +59,13 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     @Override
-    public Object releaseQuestionnaireCourse(int questionnaireId, List<Course> courses) {
-        // Todo
-        return null;
-    }
-
-    @Override
-    public Object getStudentQuestionnaireDetail(int questionnaireId) {
-        // Todo
-        return null;
+    public boolean releaseQuestionnaireCourse(List<StudentToTeacher> stts) {
+        questionnaireMapper.addSTT(stts);
+        List<User> students = questionnaireMapper.queryStudentByCCT(stts);
+        List<Message> messages = new ArrayList<>();
+        stts.forEach(stt->students.stream().filter(stu->stu.getInId() == stt.getId()).collect(Collectors.toList()).forEach(stu->messages.add(Message.builder().sttId(stt.getId()).uId(stu.getId()).context("???").build())));
+        questionnaireMapper.addMessages(messages);
+        return true;
     }
 
     public int createIndicator(List<Index> indexList) {

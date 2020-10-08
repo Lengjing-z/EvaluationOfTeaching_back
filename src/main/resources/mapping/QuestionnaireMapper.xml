@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.QuestionnaireMapper">
+
     <insert id="addIndicator">
         insert into `index`(id, p_node, name, rate, is_end) VALUES 
         <foreach collection="list" item="item" separator=",">
@@ -31,7 +32,28 @@
     <insert id="addMessages">
         insert into message(u_id, stt_id, ttt_id, context,is_read, target_id, is_finished) values
         <foreach collection="messages" item="message" separator=",">
-            (#{message.uId},#{message.sttId},#{message.tttId},#{message.context},false,#{message.targetId},false)
+            (#{message.uId},#{message.sttId},#{message.tttId},#{message.context},false,
+                <choose>
+                    <when test="message.sttId!=null">
+                        (
+                            select user.id
+                            from user
+                            right join course_class_teacher cct on user.id = cct.t_id
+                            right join studentToteacher sT on cct.id = sT.mid_id
+                            where sT.id = #{message.sttId}
+                        )
+                    </when>
+                    <otherwise>
+                        #{message.targetId}
+                    </otherwise>
+                </choose>
+             ,false)
+        </foreach>
+    </insert>
+    <insert id="addSTT" useGeneratedKeys="true" keyProperty="id">
+        insert into studentToteacher(mid_id, qn_id, begin_time, end_time) VALUES
+        <foreach collection="stts" separator="," item="stt">
+            (#{stt.midId},#{stt.qnId},#{stt.beginTime},#{stt.endTime})
         </foreach>
     </insert>
     <delete id="deleteIndicator">
@@ -71,6 +93,17 @@
         where in_id in (
             <foreach collection="ttts" item="ttt" separator=",">
                 #{ttt.inId}
+            </foreach>
+            )
+    </select>
+    <select id="queryStudentByCCT" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
+        select user.id , St.id as inId
+        from user
+        right join course_class_teacher cct on user.id = cct.t_id
+        right join studentToteacher sT on cct.id = sT.mid_id
+        where sT.id in (
+            <foreach collection="stts" item="stt" separator=",">
+                #{stt.id}
             </foreach>
             )
     </select>

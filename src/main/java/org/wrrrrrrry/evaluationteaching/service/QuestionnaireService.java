@@ -16,9 +16,6 @@ public interface QuestionnaireService {
 
     boolean releaseQuestionnaireInstitute(List<TeacherToTeacher> ttts);
 
-    Object releaseQuestionnaireCourse(int questionnaireId, List<Course> courses);
-
-    Object getStudentQuestionnaireDetail(int questionnaireId);
 
     int createIndicator(List<Index> indexList);
 
@@ -30,4 +27,6 @@ public interface QuestionnaireService {
 
 
     List<Index> queryIndicatorDetail(Index index);
+
+    boolean releaseQuestionnaireCourse(List<StudentToTeacher> stts);
 }

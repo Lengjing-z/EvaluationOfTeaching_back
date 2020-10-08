@@ -8,7 +8,9 @@ import java.util.List;
 
 @Repository
 public interface QuestionnaireMapper {
+
     int addIndicator(@Param("list") List<Index> indexList);
+
     int queryCurrentMaxId();
 
     int deleteIndicator(@Param("indicator") Index index);
@@ -36,4 +38,8 @@ public interface QuestionnaireMapper {
     List<User> queryTeachersByInids(List<TeacherToTeacher> ttts);
 
     int addMessages(List<Message> messages);
+
+    int addSTT(List<StudentToTeacher> stts);
+
+    List<User> queryStudentByCCT(List<StudentToTeacher> stts);
 }

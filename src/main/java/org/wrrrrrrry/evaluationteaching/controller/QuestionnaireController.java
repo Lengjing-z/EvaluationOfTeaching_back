@@ -45,13 +45,8 @@ public class QuestionnaireController {
     }
 
     @RequestMapping("questionnaire/release/course")
-    public Object releaseQuestionnaireCourse(int questionnaireId, @RequestBody List<Course> courses) {
-        return questionnaireService.releaseQuestionnaireCourse(questionnaireId, courses);
-    }
-
-    @RequestMapping("student/questionnaire/detail")
-    public Object getStudentQuestionnaireDetail(int questionnaireId) {
-        return questionnaireService.getStudentQuestionnaireDetail(questionnaireId);
+    public boolean releaseQuestionnaireCourse(@RequestBody List<StudentToTeacher> stts) {
+        return questionnaireService.releaseQuestionnaireCourse(stts);
     }
 
     @RequestMapping("indicator/create")
