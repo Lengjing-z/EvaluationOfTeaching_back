@@ -28,4 +28,16 @@
     <select id="selectUserPowerAll" resultType="org.wrrrrrrry.evaluationteaching.entity.UserPower">
         select id, u_id, p_id from user_power
     </select>
+    <select id="selectUserPowerById" resultType="org.wrrrrrrry.evaluationteaching.entity.UserPower">
+        select id, u_id as uId, p_id as pId
+            from user_power
+        <where>
+            <if test="condition.uId!=null and condition.uId!=0">
+                u_id = #{condition.uId}
+            </if>
+            <if test="condition.pId!=null and condition.pId!=0">
+                and p_id = #{condition.pId}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -29,7 +29,7 @@
      {for(;d<P[            p]          .o     ;d=                   q+     1)    {q=     d;
       while(q<P[                        p].o&&P[                    p].q[q]-     10     ){
       q++;}b=q-d;                         _=P                         [p].        d     ;
-      if(b>_){/*]b                                                                */
+      if(b>_){/*]b                                                                *
        P[p].d=b;}{;                                                                }
        #undef/*pqdz'.*/  e//                                                      ;
        #define/*s8qdb]*/e/**/0                                                   //

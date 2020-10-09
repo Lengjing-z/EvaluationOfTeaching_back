@@ -37,6 +37,10 @@ public class Security {
     public int powerDel(@RequestBody List<UserPower> userPowers){
         return securityService.powerDel(userPowers);
     }
+    @RequestMapping("admin/power/query")
+    public List<UserPower> powerQuery(@RequestBody UserPower userPower){
+        return securityService.queryUSerPowerById(userPower);
+    }
 
     public UserDetails getUserInfo(){
         return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

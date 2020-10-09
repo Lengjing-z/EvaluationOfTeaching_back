@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.wrrrrrrry.evaluationteaching.mapper.QuestionnaireMapper">
+
     <insert id="addIndicator">
         insert into `index`(id, p_node, name, rate, is_end) VALUES 
         <foreach collection="list" item="item" separator=",">
@@ -13,8 +14,53 @@
             )
         </foreach>
     </insert>
+    <insert id="addQuestionnaire" useGeneratedKeys="true" keyProperty="id">
+        insert into `questionnaire`(title, index_root_id) value (#{qn.title},#{qn.indexRootId})
+    </insert>
+    <insert id="addQuestions">
+        insert into `question`(content, qn_id, index_end_id) values
+        <foreach collection="qn.questions" item="q" separator=",">
+            (#{q.content},#{qn.id},#{q.indexEndId})
+        </foreach>
+    </insert>
+    <insert id="addTTT" useGeneratedKeys="true" keyProperty="id">
+        insert into teacherToteacher( qn_id, in_id, begin_time, end_time) values
+        <foreach collection="ttts" item="ttt" separator=",">
+            (#{ttt.qnId},#{ttt.inId},#{ttt.beginTime},#{ttt.endTime})
+        </foreach>
+    </insert>
+    <insert id="addMessages">
+        insert into message(u_id, stt_id, ttt_id, context,is_read, target_id, is_finished) values
+        <foreach collection="messages" item="message" separator=",">
+            (#{message.uId},#{message.sttId},#{message.tttId},#{message.context},false,
+                <choose>
+                    <when test="message.sttId!=null">
+                        (
+                            select user.id
+                            from user
+                            right join course_class_teacher cct on user.id = cct.t_id
+                            right join studentToteacher sT on cct.id = sT.mid_id
+                            where sT.id = #{message.sttId}
+                        )
+                    </when>
+                    <otherwise>
+                        #{message.targetId}
+                    </otherwise>
+                </choose>
+             ,false)
+        </foreach>
+    </insert>
+    <insert id="addSTT" useGeneratedKeys="true" keyProperty="id">
+        insert into studentToteacher(mid_id, qn_id, begin_time, end_time) VALUES
+        <foreach collection="stts" separator="," item="stt">
+            (#{stt.midId},#{stt.qnId},#{stt.beginTime},#{stt.endTime})
+        </foreach>
+    </insert>
     <delete id="deleteIndicator">
         delete from `index` where id = #{indicator.id}
+    </delete>
+    <delete id="deleteQuestionnaire">
+        delete from questionnaire where id = #{qnId}
     </delete>
     <select id="queryCurrentMaxId" resultType="java.lang.Integer">
         select max(id) from `index`
@@ -24,6 +70,42 @@
     </select>
     <select id="queryIndicatorsByPaNode" resultType="org.wrrrrrrry.evaluationteaching.entity.Index">
         select id, p_node as paNode, name, rate, is_end from `index` where p_node = #{parent.id}
+    </select>
+    <select id="queryAllQuestionnaire" resultType="org.wrrrrrrry.evaluationteaching.entity.Questionnaire">
+        select id, title, index_root_id from questionnaire limit ${start} ,${length}
+    </select>
+    <select id="queryQuestionsByQnId" resultType="org.wrrrrrrry.evaluationteaching.entity.Question">
+        select id, content, qn_id as qnId, index_end_id as indexEndId from question where qn_id = #{qnId}
+    </select>
+    <select id="queryIndicatorRootById" resultType="org.wrrrrrrry.evaluationteaching.entity.Index">
+        select id, p_node as paNode, name, rate, is_end as end from `index` where id =#{index.id}
+    </select>
+    <select id="queryIndicatorRootByQnId" resultType="org.wrrrrrrry.evaluationteaching.entity.Index">
+        select `index`.id
+            from `index`
+            right join questionnaire q on `index`.id = q.index_root_id
+        where q.id = #{qnId}
+    </select>
+    <select id="queryTeachersByInids" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
+        select user.id, name, password, in_id as inId, code, sex, age, height, addr, intr
+            from user
+            right join user_power up on user.id = up.u_id and up.p_id = 2
+        where in_id in (
+            <foreach collection="ttts" item="ttt" separator=",">
+                #{ttt.inId}
+            </foreach>
+            )
+    </select>
+    <select id="queryStudentByCCT" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
+        select user.id , St.id as inId
+        from user
+        right join course_class_teacher cct on user.id = cct.t_id
+        right join studentToteacher sT on cct.id = sT.mid_id
+        where sT.id in (
+            <foreach collection="stts" item="stt" separator=",">
+                #{stt.id}
+            </foreach>
+            )
     </select>
 
 

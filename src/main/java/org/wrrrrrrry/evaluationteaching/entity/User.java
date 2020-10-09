@@ -10,6 +10,7 @@ public class User {
     private String name;
     private String password;
     private Institute institute;
+    private int inId;
     private String code;
     private String sex;
     private int age;

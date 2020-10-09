@@ -1,12 +1,12 @@
 package org.wrrrrrrry.evaluationteaching.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.wrrrrrrry.evaluationteaching.entity.Course;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 import org.wrrrrrrry.evaluationteaching.entity.Index;
-import org.wrrrrrrry.evaluationteaching.entity.Institute;
 import org.wrrrrrrry.evaluationteaching.service.QuestionnaireService;
 
 import java.util.List;
@@ -14,44 +14,39 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("admin")
-public class Questionnaire {
+public class QuestionnaireController {
 
     @Autowired
     QuestionnaireService questionnaireService;
 
     @RequestMapping("questionnaire/create")
-    public boolean createQuestionnaire(@RequestBody Map questionnaire) {
+    public boolean createQuestionnaire(@RequestBody Questionnaire questionnaire) {
         return questionnaireService.createQuestionnaire(questionnaire);
     }
 
-    @RequestMapping("questionnaire/all")
-    public List<Index> queryAllQuestionnaire() {
-        return questionnaireService.allQuestionnaire();
+    @RequestMapping("questionnaire/all/{start}/{length}")
+    public List<Questionnaire> queryAllQuestionnaire(@PathVariable String start, @PathVariable String length) {
+        return questionnaireService.allQuestionnaire(start,length);
     }
 
     @RequestMapping("questionnaire/detail")
-    public List<Index> queryQuestionnaireDetail(@RequestBody Index index) {
-        return questionnaireService.queryQuestionnaireDetail(index);
+    public Map<String,Object> queryQuestionnaireDetail(Integer qnId) {
+        return questionnaireService.queryQuestionnaireDetail(qnId);
     }
 
     @RequestMapping("questionnaire/delete")
-    public int deleteQuestionnaire(@RequestBody Index index) {
-        return questionnaireService.deleteQuestionnaire(index);
+    public int deleteQuestionnaire(Integer qnId) {
+        return questionnaireService. deleteQuestionnaire(qnId);
     }
 
     @RequestMapping("questionnaire/release/institute")
-    public Object releaseQuestionnaireInstitute(int questionnaireId, @RequestBody List<Institute> institutes) {
-        return questionnaireService.releaseQuestionnaireInstitute(questionnaireId, institutes);
+    public boolean releaseQuestionnaireInstitute(@RequestBody List<TeacherToTeacher> ttts) {
+        return questionnaireService.releaseQuestionnaireInstitute(ttts);
     }
 
     @RequestMapping("questionnaire/release/course")
-    public Object releaseQuestionnaireCourse(int questionnaireId, @RequestBody List<Course> courses) {
-        return questionnaireService.releaseQuestionnaireCourse(questionnaireId, courses);
-    }
-
-    @RequestMapping("student/questionnaire/detail")
-    public Object getStudentQuestionnaireDetail(int questionnaireId) {
-        return questionnaireService.getStudentQuestionnaireDetail(questionnaireId);
+    public boolean releaseQuestionnaireCourse(@RequestBody List<StudentToTeacher> stts) {
+        return questionnaireService.releaseQuestionnaireCourse(stts);
     }
 
     @RequestMapping("indicator/create")
@@ -71,7 +66,7 @@ public class Questionnaire {
 
     @RequestMapping("indicator/detail")
     public List<Index> queryDetail(@RequestBody Index index) {
-        return questionnaireService.queryDetail(index);
+        return questionnaireService.queryIndicatorDetail(index);
     }
 
 
