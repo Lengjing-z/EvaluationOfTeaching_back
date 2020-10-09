@@ -26,6 +26,10 @@
     <resultMap id="evainstitute" type="org.wrrrrrrry.evaluationteaching.entity.Institute">
         <id property="id" column="evainid"/>
     </resultMap>
+    <insert id="insertStudentAnswer">
+
+    </insert>
+    <insert id="insertTeacherAnswer"></insert>
     <select id="selectStudentFinishedQuestionnaire" resultMap="questionnaire">
         select qn.id as qnid, title, index_root_id,
                u.id as beEvaid, u.name as beEvaname, u.in_id as beEvainid, u.code as beEvacode,
@@ -83,7 +87,15 @@
         where u1.code = #{code} and is_finished = false
     </select>
     <select id="selectStudentProgressingDetailById"
-            resultType="org.wrrrrrrry.evaluationteaching.entity.Question"></select>
+            resultType="org.wrrrrrrry.evaluationteaching.entity.Question">
+        select id, content, qn_id, index_end_id
+        from question
+        where qn_id = #{id};
+    </select>
     <select id="selectTeacherProgressingDetailById"
-            resultType="org.wrrrrrrry.evaluationteaching.entity.Question"></select>
+            resultType="org.wrrrrrrry.evaluationteaching.entity.Question">
+        select id, content, qn_id, index_end_id
+        from question
+        where qn_id = #{id};
+    </select>
 </mapper>

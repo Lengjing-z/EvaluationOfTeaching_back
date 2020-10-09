@@ -2,6 +2,8 @@ package org.wrrrrrrry.evaluationteaching.service;
 
 import org.wrrrrrrry.evaluationteaching.entity.Question;
 import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
+import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
+import org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer;
 
 import java.util.List;
 import java.util.Map;
@@ -29,4 +31,8 @@ public interface ToEService {
     Object getFinishedInstitute();
 
     Object getFinishedInstituteDetail(int reviewerId, int beReviewdId);
+
+    int insertStudentAnswer(List<StudentAnswer> studentAnswers);
+
+    int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers);
 }

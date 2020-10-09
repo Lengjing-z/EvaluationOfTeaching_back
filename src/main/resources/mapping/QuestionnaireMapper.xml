@@ -23,7 +23,7 @@
         select id, p_node, name, rate, is_end from `index` where p_node is null
     </select>
     <select id="queryIndicatorsByPaNode" resultType="org.wrrrrrrry.evaluationteaching.entity.Index">
-        select id, p_node, name, rate, is_end from `index` where p_node = #{parent.id}
+        select id, p_node as paNode, name, rate, is_end from `index` where p_node = #{parent.id}
     </select>
 
 

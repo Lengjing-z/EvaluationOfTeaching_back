@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.wrrrrrrry.evaluationteaching.entity.Question;
 import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
+import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
+import org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer;
 
 import java.util.List;
 import java.util.Map;
@@ -25,4 +27,8 @@ public interface ToEMapper {
     List<Question> selectStudentProgressingDetailById(@Param("id") int id);
 
     List<Question> selectTeacherProgressingDetailById(@Param("id") int id);
+
+    int insertStudentAnswer(@Param("studentAnswers") List<StudentAnswer> studentAnswers);
+
+    int insertTeacherAnswer(@Param("teacherAnswers") List<TeacherAnswer> teacherAnswers);
 }

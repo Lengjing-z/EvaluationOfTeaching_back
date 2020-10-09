@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.wrrrrrrry.evaluationteaching.entity.Question;
 import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
+import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
+import org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer;
 import org.wrrrrrrry.evaluationteaching.mapper.ToEMapper;
 import org.wrrrrrrry.evaluationteaching.service.ToEService;
 
@@ -55,6 +57,16 @@ public class ToEServiceImpl implements ToEService {
     }
 
     @Override
+    public int insertStudentAnswer(List<StudentAnswer> studentAnswers) {
+        return toEMapper.insertStudentAnswer(studentAnswers);
+    }
+
+    @Override
+    public int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers) {
+        return toEMapper.insertTeacherAnswer(teacherAnswers);
+    }
+
+    @Override
     public Object getStudentEvaluationDetail(int studentId) {
         // Todo
         return null;
@@ -83,4 +95,5 @@ public class ToEServiceImpl implements ToEService {
         // Todo
         return null;
     }
+
 }

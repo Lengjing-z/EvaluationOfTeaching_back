@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.wrrrrrrry.evaluationteaching.entity.Question;
 import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
+import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
+import org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer;
 import org.wrrrrrrry.evaluationteaching.service.ToEService;
 
 import java.util.List;
@@ -43,13 +46,20 @@ public class ToE {
     public List<Question> getTeacherProgressingDetail(int id){
         return toEService.queryTeacherProgressingDetailById(id);
     }
-
+    @RequestMapping("/evaluation/student/submit")
+    public int submitStudentAnswer(@RequestBody List<StudentAnswer> studentAnswers){
+        return toEService.insertStudentAnswer(studentAnswers);
+    }
+    @RequestMapping("/evaluation/teacher/submit")
+    public int submitTeacherAnswer(@RequestBody List<TeacherAnswer> teacherAnswers){
+        return toEService.insertTeacherAnswer(teacherAnswers);
+    }
     // Todo
     // add /admin prefix
-    @RequestMapping("/evaluation/student/detail")
-    public Object getStudentEvaluationDetail(int studentId) {
-        return toEService.getStudentEvaluationDetail(studentId);
-    }
+//    @RequestMapping("/evaluation/student/detail")
+//    public Object getStudentEvaluationDetail(int studentId) {
+//        return toEService.getStudentEvaluationDetail(studentId);
+//    }
 
     // Todo
     // add </admin> prefix to the following 4 request mapping
