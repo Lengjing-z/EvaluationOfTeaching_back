@@ -2,6 +2,7 @@ package org.wrrrrrrry.evaluationteaching.service.imply;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.wrrrrrrry.evaluationteaching.entity.Question;
 import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
 import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class ToEServiceImpl implements ToEService {
     @Autowired
     ToEMapper toEMapper;

@@ -2,6 +2,7 @@ package org.wrrrrrrry.evaluationteaching.service.imply;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.wrrrrrrry.evaluationteaching.entity.Clazz;
 import org.wrrrrrrry.evaluationteaching.entity.Course;
 import org.wrrrrrrry.evaluationteaching.entity.Power;
@@ -12,6 +13,7 @@ import org.wrrrrrrry.evaluationteaching.service.PublicMessageService;
 import java.util.List;
 
 @Service
+@Transactional
 public class PublicMessageServiceImpl implements PublicMessageService {
     @Autowired
     PublicMessageMapper publicMessageMapper;
