@@ -27,7 +27,7 @@
         where code = #{code}
     </select>
     <select id="selectPowerAll" resultType="org.wrrrrrrry.evaluationteaching.entity.Power">
-        select id, name, is_role, p_node, is_end from power
+        select id, name, is_role as isRole, p_node as pNode, is_end as isEnd from power
     </select>
     <select id="selectClassByName" resultType="org.wrrrrrrry.evaluationteaching.entity.Clazz">
         select id, name, is_public from class
