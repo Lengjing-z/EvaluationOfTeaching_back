@@ -1,16 +1,12 @@
 package org.wrrrrrrry.evaluationteaching.service;
 
-import org.wrrrrrrry.evaluationteaching.entity.Question;
-import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
-import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
-import org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 
 import java.util.List;
 import java.util.Map;
 
 public interface ToEService {
     List<Questionnaire> queryFinishedQuestionnaire(String code,boolean isStudent);
-
 
     List<Map<String, String>> queryFinishedDetailById(int id,boolean isStudent);
 
@@ -35,4 +31,6 @@ public interface ToEService {
     int insertStudentAnswer(List<StudentAnswer> studentAnswers,String code);
 
     int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers,String code);
+
+    List<Map> getBeEvaluationFinishedList(Integer tId);
 }

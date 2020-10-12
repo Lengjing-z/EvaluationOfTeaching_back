@@ -2,10 +2,7 @@ package org.wrrrrrrry.evaluationteaching.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.wrrrrrrry.evaluationteaching.entity.Question;
-import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
-import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
-import org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 
 import java.util.List;
 import java.util.Map;
@@ -33,4 +30,6 @@ public interface ToEMapper {
     int insertTeacherAnswer(@Param("teacherAnswers") List<TeacherAnswer> teacherAnswers);
 
     int updateMessage(@Param("code") String code,@Param("sttId") int sttId);
+
+    List<Map> selectEvaluationFinishedList(Integer tId);
 }

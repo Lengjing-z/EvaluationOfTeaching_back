@@ -7,10 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.wrrrrrrry.evaluationteaching.entity.Question;
-import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
-import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
-import org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 import org.wrrrrrrry.evaluationteaching.service.ToEService;
 
 import java.util.List;
@@ -57,35 +54,40 @@ public class ToE {
     }
     // Todo
     // add /admin prefix
-//    @RequestMapping("/evaluation/student/detail")
-//    public Object getStudentEvaluationDetail(int studentId) {
-//        return toEService.getStudentEvaluationDetail(studentId);
-//    }
+    @RequestMapping("admin/evaluation/student/detail")
+    public Object getStudentEvaluationDetail(int studentId) {
+        return toEService.getStudentEvaluationDetail(studentId);
+    }
 
     // Todo
     // add </admin> prefix to the following 4 request mapping
     // mapping one
-    @RequestMapping("/beEvaluation/finished/course")
+    @RequestMapping("admin/beEvaluation/finished/course")
     public Object getFinishedCourse() {
         return toEService.getFinishedCourse();
     }
 
     // mapping two
-    @RequestMapping("/beEvaluation/finished/course/detail")
+    @RequestMapping("admin/beEvaluation/finished/course/detail")
     public Object getFinishedCourseDetail(int studentId, int teacherId) {
         return toEService.getFinishedCourseDetail(studentId, teacherId);
     }
 
     // mapping three
-    @RequestMapping("/beEvaluation/finished/institute")
+    @RequestMapping("admin/beEvaluation/finished/institute")
     public Object getFinishedInstitute() {
         return toEService.getFinishedInstitute();
     }
 
     // mapping four
-    @RequestMapping("/beEvaluation/finished/institute/detail")
+    @RequestMapping("admin/beEvaluation/finished/institute/detail")
     public Object getFinishedInstituteDetail(int reviewerId, int beReviewedId) {
         return toEService.getFinishedInstituteDetail(reviewerId, beReviewedId);
+    }
+
+    @RequestMapping("beEvaluation/finished/list")
+    public List<Map> beEvaluationFinishedList(Integer tId){
+        return toEService.getBeEvaluationFinishedList(tId);
     }
 
     public UserDetails getUserInfo() {

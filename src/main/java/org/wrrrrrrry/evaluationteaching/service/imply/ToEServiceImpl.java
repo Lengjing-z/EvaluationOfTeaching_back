@@ -3,10 +3,7 @@ package org.wrrrrrrry.evaluationteaching.service.imply;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.wrrrrrrry.evaluationteaching.entity.Question;
-import org.wrrrrrrry.evaluationteaching.entity.Questionnaire;
-import org.wrrrrrrry.evaluationteaching.entity.StudentAnswer;
-import org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 import org.wrrrrrrry.evaluationteaching.mapper.ToEMapper;
 import org.wrrrrrrry.evaluationteaching.service.ToEService;
 
@@ -68,6 +65,11 @@ public class ToEServiceImpl implements ToEService {
     @Override
     public int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers,String code) {
         return toEMapper.insertTeacherAnswer(teacherAnswers);
+    }
+
+    @Override
+    public List<Map> getBeEvaluationFinishedList(Integer tId) {
+        return toEMapper.selectEvaluationFinishedList(tId);
     }
 
     @Override

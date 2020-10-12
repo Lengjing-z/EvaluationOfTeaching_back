@@ -110,4 +110,18 @@
         from question
         where qn_id = #{id};
     </select>
+
+    <select id="selectEvaluationFinishedList" resultType="java.util.Map">
+        select q.id as qId, q.title as qTitle,
+               sT.mid_id as midId, sT.begin_time as beginTime, sT.end_time as endTime,
+               user.name as userName, user.id as uId,
+               i.id as iId, i.name as iName
+        from studentToteacher sT
+        right join questionnaire q on sT.qn_id = q.id
+        right join course_class_teacher cct on sT.mid_id = cct.id
+        right join user on user.id = cct.t_id = user.id
+        right join institute i on user.in_id = i.id
+        where user.id = #{uId}
+    </select>
+
 </mapper>

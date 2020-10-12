@@ -10,6 +10,7 @@ import org.wrrrrrrry.evaluationteaching.entity.User;
 import org.wrrrrrrry.evaluationteaching.mapper.*;
 import org.wrrrrrrry.evaluationteaching.service.PublicMessageService;
 import org.wrrrrrrry.evaluationteaching.service.QuestionnaireService;
+import org.wrrrrrrry.evaluationteaching.service.ToEService;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -25,14 +26,10 @@ import java.util.stream.Collectors;
 class EvaluationTeachingApplicationTests {
 
     @Autowired
-    QuestionnaireService questionnaireService;
+    ToEService toEService;
     @Test
     void contextLoads() throws SQLException {
-        List<TeacherToTeacher> teacherToTeachers = new ArrayList<>();
-        teacherToTeachers.add(TeacherToTeacher.builder().qnId(9).inId(1001).beginTime(new Date()).endTime(new Date()).build());
-        teacherToTeachers.add(TeacherToTeacher.builder().qnId(9).inId(1002).beginTime(new Date()).endTime(new Date()).build());
-        teacherToTeachers.add(TeacherToTeacher.builder().qnId(9).inId(1003).beginTime(new Date()).endTime(new Date()).build());
-        questionnaireService.releaseQuestionnaireInstitute(teacherToTeachers);
+        System.out.println(toEService.getBeEvaluationFinishedList(32));
     }
 
 }
