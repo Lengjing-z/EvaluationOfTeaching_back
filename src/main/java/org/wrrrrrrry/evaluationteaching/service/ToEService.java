@@ -32,7 +32,7 @@ public interface ToEService {
 
     Object getFinishedInstituteDetail(int reviewerId, int beReviewdId);
 
-    int insertStudentAnswer(List<StudentAnswer> studentAnswers);
+    int insertStudentAnswer(List<StudentAnswer> studentAnswers,String code);
 
-    int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers);
+    int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers,String code);
 }

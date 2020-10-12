@@ -26,10 +26,22 @@
     <resultMap id="evainstitute" type="org.wrrrrrrry.evaluationteaching.entity.Institute">
         <id property="id" column="evainid"/>
     </resultMap>
-    <insert id="insertStudentAnswer">
-
+    <insert id="insertStudentAnswer" parameterType="org.wrrrrrrry.evaluationteaching.entity.StudentAnswer">
+        insert into student_answer(stt_id, s_id, q_id, answer) values
+        <foreach collection="studentAnswers" item="studentAnswer" separator=",">
+            (
+            #{studentAnswer.sttId},
+            #{studentAnswer.stId},
+            #{studentAnswer.qId},
+            #{studentAnswer.answer}
+            )
+        </foreach>
     </insert>
     <insert id="insertTeacherAnswer"></insert>
+    <update id="updateMessage">
+        update message set is_finished = true
+        where stt_id = #{sttId} and u_id = (select id from user where code=#{code})
+    </update>
     <select id="selectStudentFinishedQuestionnaire" resultMap="questionnaire">
         select qn.id as qnid, title, index_root_id,
                u.id as beEvaid, u.name as beEvaname, u.in_id as beEvainid, u.code as beEvacode,

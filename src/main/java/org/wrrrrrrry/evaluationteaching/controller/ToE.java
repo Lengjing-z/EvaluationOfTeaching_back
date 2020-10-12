@@ -49,11 +49,11 @@ public class ToE {
 
     @RequestMapping("/evaluation/student/submit")
     public int submitStudentAnswer(@RequestBody List<StudentAnswer> studentAnswers){
-        return toEService.insertStudentAnswer(studentAnswers);
+        return toEService.insertStudentAnswer(studentAnswers,getUserInfo().getUsername());
     }
     @RequestMapping("/evaluation/teacher/submit")
     public int submitTeacherAnswer(@RequestBody List<TeacherAnswer> teacherAnswers){
-        return toEService.insertTeacherAnswer(teacherAnswers);
+        return toEService.insertTeacherAnswer(teacherAnswers,getUserInfo().getUsername());
     }
     // Todo
     // add /admin prefix
