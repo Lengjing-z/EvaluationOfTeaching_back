@@ -32,5 +32,7 @@ public interface ToEMapper {
 
     int insertTeacherAnswer(@Param("teacherAnswers") List<TeacherAnswer> teacherAnswers);
 
-    int updateMessage(@Param("code") String code,@Param("sttId") int sttId);
+    int updateStudentMessage(@Param("code") String code,@Param("sttId") int sttId);
+
+    int updateTeacherMessage(@Param("uId") int uId,@Param("tttId") int tttId,@Param("targetId") int targetId);
 }

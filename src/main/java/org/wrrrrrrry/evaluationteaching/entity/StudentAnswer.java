@@ -7,6 +7,6 @@ public class StudentAnswer {
     private int id;
     private int sttId;
     private int stId;
-    private int qId;
+    private int qsId;
     private String answer;
 }

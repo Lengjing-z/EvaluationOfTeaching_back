@@ -6,7 +6,7 @@ import lombok.Data;
 public class TeacherAnswer {
     private int id;
     private int tttId;
-    private int qId;
+    private int qsId;
     private int valuatorId;
     private int beValuatorId;
     private String answer;

@@ -34,5 +34,5 @@ public interface ToEService {
 
     int insertStudentAnswer(List<StudentAnswer> studentAnswers,String code);
 
-    int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers,String code);
+    int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers);
 }
