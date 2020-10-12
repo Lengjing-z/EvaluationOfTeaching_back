@@ -32,15 +32,30 @@
             (
             #{studentAnswer.sttId},
             #{studentAnswer.stId},
-            #{studentAnswer.qId},
+            #{studentAnswer.qsId},
             #{studentAnswer.answer}
             )
         </foreach>
     </insert>
-    <insert id="insertTeacherAnswer"></insert>
-    <update id="updateMessage">
+    <insert id="insertTeacherAnswer" parameterType="org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer">
+        insert into teacher_answer(ttt_id, q_id, valuator_id, beValuator_id, answer) values
+        <foreach collection="teacherAnswers" item="teacherAnswer" separator=",">
+            (
+             #{teacherAnswer.tttId},
+             #{teacherAnswer.qsId},
+             #{teacherAnswer.valuatorId},
+             #{teacherAnswer.beValuatorId},
+             #{teacherAnswer.answer}
+            )
+        </foreach>
+    </insert>
+    <update id="updateStudentMessage">
         update message set is_finished = true
         where stt_id = #{sttId} and u_id = (select id from user where code=#{code})
+    </update>
+    <update id="updateTeacherMessage">
+        update message set is_finished = true
+        where u_id=#{uId} and ttt_id = #{tttId} and target_id = #{targetId}
     </update>
     <select id="selectStudentFinishedQuestionnaire" resultMap="questionnaire">
         select qn.id as qnid, title, index_root_id,

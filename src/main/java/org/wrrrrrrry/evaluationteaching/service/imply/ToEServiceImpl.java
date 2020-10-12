@@ -58,13 +58,15 @@ public class ToEServiceImpl implements ToEService {
     @Override
     public int insertStudentAnswer(List<StudentAnswer> studentAnswers,String code) {
         int r = toEMapper.insertStudentAnswer(studentAnswers);
-        toEMapper.updateMessage(code,studentAnswers.get(0).getSttId());
+        toEMapper.updateStudentMessage(code,studentAnswers.get(0).getSttId());
         return r;
     }
 
     @Override
-    public int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers,String code) {
-        return toEMapper.insertTeacherAnswer(teacherAnswers);
+    public int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers) {
+        int r = toEMapper.insertTeacherAnswer(teacherAnswers);
+        toEMapper.updateTeacherMessage(teacherAnswers.get(0).getValuatorId(),teacherAnswers.get(0).getTttId(),teacherAnswers.get(0).getBeValuatorId());
+        return r;
     }
 
     @Override

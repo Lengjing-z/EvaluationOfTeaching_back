@@ -50,7 +50,7 @@ public class ToE {
     }
     @RequestMapping("/evaluation/teacher/submit")
     public int submitTeacherAnswer(@RequestBody List<TeacherAnswer> teacherAnswers){
-        return toEService.insertTeacherAnswer(teacherAnswers,getUserInfo().getUsername());
+        return toEService.insertTeacherAnswer(teacherAnswers);
     }
     // Todo
     // add /admin prefix
