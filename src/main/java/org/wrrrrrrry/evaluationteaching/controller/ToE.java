@@ -52,6 +52,7 @@ public class ToE {
     public int submitTeacherAnswer(@RequestBody List<TeacherAnswer> teacherAnswers){
         return toEService.insertTeacherAnswer(teacherAnswers);
     }
+
     // Todo
     // add /admin prefix
     @RequestMapping("admin/evaluation/student/detail")
@@ -85,10 +86,37 @@ public class ToE {
         return toEService.getFinishedInstituteDetail(reviewerId, beReviewedId);
     }
 
-    @RequestMapping("beEvaluation/finished/list")
-    public List<Map> beEvaluationFinishedList(Integer tId){
-        return toEService.getBeEvaluationFinishedList(tId);
+    @RequestMapping("beEvaluation/institute/all")
+    public List<Map> beEvaluationInstitute(){
+        return toEService.getBeEvaluationInstituteList(getUserInfo().getUsername());
     }
+
+    @RequestMapping("beEvaluation/institute/detail")
+    public Map beEvaluationInstituteDetail(int tttId){
+        return toEService.bEInDe(tttId);
+    }
+
+    @RequestMapping("beEvaluation/institute/progress")
+    public Map beEvaluationInstituteProgress(int tttId){
+        return toEService.bEInPro(tttId);
+    }
+
+    @RequestMapping("beEvaluation/course/all")
+    public List<Map> beEvaluationCourse(){
+        return toEService.getBeEvaluationCourseList(getUserInfo().getUsername());
+    }
+
+    @RequestMapping("beEvaluation/course/detail")
+    public Map beEvaluationCourseDetail(int tttId){
+        return toEService.bECoDe(tttId);
+    }
+
+    @RequestMapping("beEvaluation/course/progress")
+    public Map beEvaluationCourseProgress(int tttId){
+        return toEService.bECoPro(tttId);
+    }
+
+
 
     public UserDetails getUserInfo() {
         return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

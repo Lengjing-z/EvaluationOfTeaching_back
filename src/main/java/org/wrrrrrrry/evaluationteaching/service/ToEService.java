@@ -33,7 +33,17 @@ public interface ToEService {
 
     int insertStudentAnswer(List<StudentAnswer> studentAnswers,String code);
 
-    List<Map> getBeEvaluationFinishedList(Integer tId);
+    List<Map> getBeEvaluationInstituteList(String code);
 
     int insertTeacherAnswer(List<TeacherAnswer> teacherAnswers);
+
+    Map bEInDe(int tttId);
+
+    Map bEInPro(int tttId);
+
+    List<Map> getBeEvaluationCourseList(String code);
+
+    Map bECoDe(int tttId);
+
+    Map bECoPro(int tttId);
 }
