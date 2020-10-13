@@ -150,4 +150,29 @@
         where user.code = #{code}
     </select>
 
+    <select id="selectbECoPro" resultType="java.util.Map">
+        select u.id as uid, u.name as uName, u.code as uCode, u.in_id as uInId,
+               m.id as mId, m.target_id as targetId, m.is_finished as isFinished, m.is_read as isRead
+        from studentToteacher stt
+        left join message m on stt.id = m.stt_id
+        left join user u on m.u_id = u.id
+        where stt.id = #{sttId}
+    </select>
+    <select id="selectbEInPro" resultType="java.util.Map">
+        select *
+        from teacherToteacher ttt
+        left join message m on ttt.id = m.ttt_id
+        left join user u on m.u_id = u.id
+    </select>
+    <select id="selectBECoDetail" resultType="org.wrrrrrrry.evaluationteaching.entity.StudentAnswer">
+        select id, stt_id as sttId, s_id as sId , q_id as qId, answer
+        from student_answer
+        where stt_id = #{sttId}
+    </select>
+    <select id="selectBEInDetail" resultType="org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer">
+        select id, ttt_id as tttId, q_id as qId, valuator_id as valuatorId, beValuator_id as beValuatorId, answer
+        from teacher_answer
+        where id = #{tttId}
+    </select>
+
 </mapper>

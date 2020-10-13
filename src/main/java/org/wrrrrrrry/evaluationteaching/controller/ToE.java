@@ -96,8 +96,9 @@ public class ToE {
         return toEService.bEInDe(tttId);
     }
 
+    // useless
     @RequestMapping("beEvaluation/institute/progress")
-    public Map beEvaluationInstituteProgress(int tttId){
+    public List<Map> beEvaluationInstituteProgress(int tttId){
         return toEService.bEInPro(tttId);
     }
 
@@ -107,13 +108,13 @@ public class ToE {
     }
 
     @RequestMapping("beEvaluation/course/detail")
-    public Map beEvaluationCourseDetail(int tttId){
-        return toEService.bECoDe(tttId);
+    public Map beEvaluationCourseDetail(int sttId){
+        return toEService.bECoDe(sttId);
     }
 
     @RequestMapping("beEvaluation/course/progress")
-    public Map beEvaluationCourseProgress(int tttId){
-        return toEService.bECoPro(tttId);
+    public List<Map> beEvaluationCourseProgress(int sttId){
+        return toEService.bECoPro(sttId);
     }
 
 

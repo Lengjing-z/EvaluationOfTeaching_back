@@ -3,14 +3,12 @@ package org.wrrrrrrry.evaluationteaching.service.imply;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.wrrrrrrry.evaluationteaching.entity.Clazz;
-import org.wrrrrrrry.evaluationteaching.entity.Course;
-import org.wrrrrrrry.evaluationteaching.entity.Power;
-import org.wrrrrrrry.evaluationteaching.entity.User;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 import org.wrrrrrrry.evaluationteaching.mapper.PublicMessageMapper;
 import org.wrrrrrrry.evaluationteaching.service.PublicMessageService;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -62,5 +60,15 @@ public class PublicMessageServiceImpl implements PublicMessageService {
     public List<User> queryUserByCode(String code) {
 
         return publicMessageMapper.selectUserByCode("%"+code+"%");
+    }
+
+    @Override
+    public List<Institute> queryInstitute(String name) {
+        return publicMessageMapper.queryInstitute("%"+name+"%");
+    }
+
+    @Override
+    public List<Map> queryCCT(String name) {
+        return publicMessageMapper.queryCCT("%"+name+"%");
     }
 }

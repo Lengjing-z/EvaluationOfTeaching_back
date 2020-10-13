@@ -39,4 +39,12 @@ public interface ToEMapper {
     int updateStudentMessage(@Param("code") String code,@Param("sttId") int sttId);
 
     int updateTeacherMessage(@Param("uId") int uId,@Param("tttId") int tttId,@Param("targetId") int targetId);
+
+    List<Map> selectbECoPro(int sttId);
+
+    List<Map> selectbEInPro(int tttId);
+
+    List<StudentAnswer> selectBECoDetail(int sttId);
+
+    List<TeacherAnswer> selectBEInDetail(int tttId);
 }
