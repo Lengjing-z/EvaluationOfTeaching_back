@@ -6,10 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.wrrrrrrry.evaluationteaching.entity.Clazz;
-import org.wrrrrrrry.evaluationteaching.entity.Course;
-import org.wrrrrrrry.evaluationteaching.entity.Power;
-import org.wrrrrrrry.evaluationteaching.entity.User;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 import org.wrrrrrrry.evaluationteaching.service.PublicMessageService;
 
 import java.util.List;
@@ -58,6 +55,10 @@ public class PublicMessage {
     @RequestMapping("/admin/user/query")
     public List<User> getUserByCodeFun(String code){
         return publicMessageService.queryUserByCode(code);
+    }
+    @RequestMapping("/admin/institute/query")
+    public List<Institute> getInstitutesByName(String name){
+        return publicMessageService.queryInstitute(name);
     }
 
     public UserDetails getUserInfo(){

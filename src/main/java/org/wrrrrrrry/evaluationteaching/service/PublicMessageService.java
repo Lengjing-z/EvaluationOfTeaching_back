@@ -1,9 +1,6 @@
 package org.wrrrrrrry.evaluationteaching.service;
 
-import org.wrrrrrrry.evaluationteaching.entity.Clazz;
-import org.wrrrrrrry.evaluationteaching.entity.Course;
-import org.wrrrrrrry.evaluationteaching.entity.Power;
-import org.wrrrrrrry.evaluationteaching.entity.User;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 
 import java.util.List;
 
@@ -25,4 +22,6 @@ public interface PublicMessageService {
     List<Course> queryCourseByName(String name);
 
     List<User> queryUserByCode(String code);
+
+    List<Institute> queryInstitute(String name);
 }

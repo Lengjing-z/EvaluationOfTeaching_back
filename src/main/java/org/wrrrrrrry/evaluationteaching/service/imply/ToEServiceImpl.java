@@ -7,6 +7,7 @@ import org.wrrrrrrry.evaluationteaching.entity.*;
 import org.wrrrrrrry.evaluationteaching.mapper.ToEMapper;
 import org.wrrrrrrry.evaluationteaching.service.ToEService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,14 +72,14 @@ public class ToEServiceImpl implements ToEService {
 
     @Override
     public Map bEInDe(int tttId) {
-        // todo
+        Map result = new HashMap();
+        result.put("answers",toEMapper.selectBEInDetail(tttId));
         return null;
     }
 
     @Override
-    public Map bEInPro(int tttId) {
-        // todo
-        return null;
+    public List<Map> bEInPro(int tttId) {
+        return toEMapper.selectbEInPro(tttId);
     }
 
     @Override
@@ -87,15 +88,16 @@ public class ToEServiceImpl implements ToEService {
     }
 
     @Override
-    public Map bECoDe(int tttId) {
-        // todo
-        return null;
+    public Map bECoDe(int sttId) {
+        Map result = new HashMap();
+        result.put("answers",toEMapper.selectBECoDetail(sttId));
+        return result;
     }
 
     @Override
-    public Map bECoPro(int tttId) {
-        // todo
-        return null;
+    public List<Map> bECoPro(int sttId) {
+
+        return toEMapper.selectbECoPro(sttId);
     }
 
     @Override

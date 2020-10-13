@@ -2,10 +2,7 @@ package org.wrrrrrrry.evaluationteaching.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.wrrrrrrry.evaluationteaching.entity.Clazz;
-import org.wrrrrrrry.evaluationteaching.entity.Course;
-import org.wrrrrrrry.evaluationteaching.entity.Power;
-import org.wrrrrrrry.evaluationteaching.entity.User;
+import org.wrrrrrrry.evaluationteaching.entity.*;
 
 import java.util.List;
 
@@ -28,4 +25,6 @@ public interface PublicMessageMapper {
     List<Course> selectCourseByName(@Param("name") String name);
 
     List<User> selectUserByCode(@Param("code") String code);
+
+    List<Institute> queryInstitute(String name);
 }

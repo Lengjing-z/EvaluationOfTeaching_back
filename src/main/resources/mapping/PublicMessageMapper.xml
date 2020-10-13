@@ -65,4 +65,7 @@
         left join institute i on user.in_id = i.id
         where code like #{code}
     </select>
+    <select id="queryInstitute" resultType="org.wrrrrrrry.evaluationteaching.entity.Institute">
+        select * from institute where name like #{name}
+    </select>
 </mapper>
