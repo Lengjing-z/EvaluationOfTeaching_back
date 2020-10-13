@@ -69,7 +69,7 @@
         select id, name from institute where name like #{name}
     </select>
     <select id="queryCCT" resultType="java.util.Map">
-        select id as id, c.name as coursceName, u.name as teacherName
+        select course_class_teacher.id as id, c.name as coursceName, u.name as teacherName
         from course_class_teacher
         left join course c on course_class_teacher.course_id = c.id
         left join class c2 on c2.id = course_class_teacher.cla_id
