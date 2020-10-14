@@ -29,7 +29,6 @@ class EvaluationTeachingApplicationTests {
     ToEService toEService;
     @Test
     void contextLoads() throws SQLException {
-        System.out.println(toEService.getBeEvaluationFinishedList(32));
     }
 
 }

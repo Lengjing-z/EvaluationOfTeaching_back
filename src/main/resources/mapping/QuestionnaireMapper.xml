@@ -39,8 +39,8 @@
                             select user.id
                             from user
                             right join course_class_teacher cct on user.id = cct.t_id
-                            right join studentToteacher sT on cct.id = sT.mid_id
-                            where sT.id = #{message.sttId}
+                            right join studentToteacher  on cct.id = studentToteacher.mid_id
+                            where studentToteacher.id = #{message.sttId}
                         )
                     </when>
                     <otherwise>
@@ -97,7 +97,7 @@
             )
     </select>
     <select id="queryStudentByCCT" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
-        select user.id , St.id as inId
+        select user.id , sT.id as inId
         from user
         right join course_class_teacher cct on user.id = cct.t_id
         right join studentToteacher sT on cct.id = sT.mid_id

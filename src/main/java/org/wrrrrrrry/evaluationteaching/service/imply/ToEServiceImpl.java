@@ -101,6 +101,11 @@ public class ToEServiceImpl implements ToEService {
     }
 
     @Override
+    public List<Map> getEvaluationList() {
+        return toEMapper.selectEvaluationList();
+    }
+
+    @Override
     public List<Map> getBeEvaluationInstituteList(String code) {
         return toEMapper.selectEvaluationInstituteList(code);
     }

@@ -69,11 +69,11 @@
         select id, name from institute where name like #{name}
     </select>
     <select id="queryCCT" resultType="java.util.Map">
-        select course_class_teacher.id as id, c.name as coursceName, u.name as teacherName
+        select course_class_teacher.id as id, c.name as coursceName, u.name as teacherName, c2.name as className
         from course_class_teacher
         left join course c on course_class_teacher.course_id = c.id
         left join class c2 on c2.id = course_class_teacher.cla_id
         left join user u on course_class_teacher.t_id = u.id
-        where course_class_teacher.name like #{s}
+        where c.name like #{s}
     </select>
 </mapper>
