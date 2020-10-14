@@ -33,6 +33,11 @@ public class PublicMessage {
     public List<Course> getTeacherCourseByCode(){
         return publicMessageService.queryTeacherCourse(getUserInfo().getUsername());
     }
+    @RequestMapping("/class/allEvaluations")
+    public List<Map> getAllEvaluationByClass(int cId){
+        return publicMessageService.getAllEByC(cId);
+    }
+
     @RequestMapping("admin/power/all")
     public List<Power> getPowers(){
         return publicMessageService.queryPowerAll();
