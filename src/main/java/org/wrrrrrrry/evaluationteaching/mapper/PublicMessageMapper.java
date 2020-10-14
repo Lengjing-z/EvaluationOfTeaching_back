@@ -30,4 +30,6 @@ public interface PublicMessageMapper {
     List<Institute> queryInstitute(String name);
 
     List<Map> queryCCT(String s);
+
+    List<Map> queryALlEByC(int cId);
 }

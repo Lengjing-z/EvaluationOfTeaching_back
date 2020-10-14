@@ -27,4 +27,6 @@ public interface PublicMessageService {
     List<Institute> queryInstitute(String name);
 
     List<Map> queryCCT(String name);
+
+    List<Map> getAllEByC(int cId);
 }

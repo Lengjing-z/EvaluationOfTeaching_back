@@ -76,4 +76,13 @@
         left join user u on course_class_teacher.t_id = u.id
         where c.name like #{s}
     </select>
+    <select id="queryALlEByC" resultType="java.util.Map">
+        select sT.id as stId, sT.begin_time as beginTime,sT.end_time as endTime,
+               q.id as qnId, q.title as qnTitle, q.index_root_id as indicatorRoot
+        from class c
+        left join course_class_teacher cct on c.id = cct.cla_id
+        left join studentToteacher sT on cct.id = sT.mid_id
+        left join questionnaire q on sT.qn_id = q.id
+        where c.id = #{cId}
+    </select>
 </mapper>
