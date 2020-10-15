@@ -85,4 +85,13 @@
         left join questionnaire q on sT.qn_id = q.id
         where c.id = #{cId}
     </select>
+    <select id="queryCCtByCourse" resultType="java.util.Map">
+        select c.id as classId, c.name as className,c.is_public as classIsPublic,
+               u.id as userId, u.name as teacherName, u.code as userCode
+        from course co
+        left join course_class_teacher cct on co.id = cct.course_id
+        left join class c on cct.cla_id = c.id
+        left join user u on cct.t_id = u.id
+        where co.id = #{id}
+    </select>
 </mapper>

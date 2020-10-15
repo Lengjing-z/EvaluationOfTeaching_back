@@ -70,6 +70,10 @@ public class PublicMessage {
     public List<Map> getCCTByName(String name){
         return publicMessageService.queryCCT(name);
     }
+    @RequestMapping("/admin/course/cct")
+    public List<Map> getCCTByCourseId(int id){
+        return publicMessageService.queryCCTByCoyurse(id);
+    }
 
     public UserDetails getUserInfo(){
         return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

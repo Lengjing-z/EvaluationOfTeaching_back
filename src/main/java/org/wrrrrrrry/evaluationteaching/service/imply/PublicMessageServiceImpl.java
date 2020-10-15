@@ -76,4 +76,9 @@ public class PublicMessageServiceImpl implements PublicMessageService {
     public List<Map> getAllEByC(int cId) {
         return publicMessageMapper.queryALlEByC(cId);
     }
+
+    @Override
+    public List<Map> queryCCTByCoyurse(int id) {
+        return publicMessageMapper.queryCCtByCourse(id);
+    }
 }

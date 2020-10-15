@@ -29,4 +29,6 @@ public interface PublicMessageService {
     List<Map> queryCCT(String name);
 
     List<Map> getAllEByC(int cId);
+
+    List<Map> queryCCTByCoyurse(int id);
 }

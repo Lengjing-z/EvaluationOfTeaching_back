@@ -32,4 +32,6 @@ public interface PublicMessageMapper {
     List<Map> queryCCT(String s);
 
     List<Map> queryALlEByC(int cId);
+
+    List<Map> queryCCtByCourse(int id);
 }
