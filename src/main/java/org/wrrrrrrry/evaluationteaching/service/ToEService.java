@@ -47,5 +47,8 @@ public interface ToEService {
 
     List<Map> bECoPro(int cctId);
 
-    List<Map> getEvaluationList();
+    List<Map> getStudentEvaluationList();
+
+    List<Map> getTeacherEvaluationList();
+
 }

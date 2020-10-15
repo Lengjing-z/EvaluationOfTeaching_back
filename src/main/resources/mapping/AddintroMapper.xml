@@ -64,4 +64,12 @@
                 )
             </foreach>
     </insert>
+    <insert id="insertInstitute">
+        insert into institute(name) values
+        <foreach collection="institutes" item="institute" separator=",">
+            (
+             #{institute.name}
+            )
+        </foreach>
+    </insert>
 </mapper>

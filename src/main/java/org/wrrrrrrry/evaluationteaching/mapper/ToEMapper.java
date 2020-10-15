@@ -48,5 +48,7 @@ public interface ToEMapper {
 
     List<TeacherAnswer> selectBEInDetail(int tttId);
 
-    List<Map> selectEvaluationList();
+    List<Map> selectStudentEvaluationList();
+
+    List<Map> selectTeacherEvaluationList();
 }

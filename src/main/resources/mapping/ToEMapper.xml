@@ -174,7 +174,7 @@
         from teacher_answer
         where id = #{tttId}
     </select>
-    <select id="selectEvaluationList" resultType="java.util.Map">
+    <select id="selectStudentEvaluationList" resultType="java.util.Map">
         select studentToteacher.id as stId, studentToteacher.mid_id, studentToteacher.qn_id, studentToteacher.begin_time, studentToteacher.end_time,
                q.id as qnId, q.title, q.index_root_id,
                cct.id as cctId, cct.course_id, cct.cla_id, cct.t_id,
@@ -184,6 +184,13 @@
         left join course_class_teacher cct on studentToteacher.mid_id = cct.id
         left join course c on cct.course_id = c.id
         left join class c2 on cct.cla_id = c2.id
+    </select>
+    <select id="selectTeacherEvaluationList" resultType="java.util.Map">
+        select teacherToteacher.id, qn_id, in_id, begin_time, end_time,
+               q.id as qnId, title, index_root_id,
+               i.id as inId, name from teacherToteacher
+        left join questionnaire q on teacherToteacher.qn_id = q.id
+        left join institute i on teacherToteacher.in_id = i.id
     </select>
 
 </mapper>

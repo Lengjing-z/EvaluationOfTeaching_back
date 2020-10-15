@@ -53,9 +53,13 @@ public class ToE {
         return toEService.insertTeacherAnswer(teacherAnswers);
     }
 
-    @RequestMapping("/admin/evaluation/list")
-    public List<Map> getEvaluationList(){
-        return toEService.getEvaluationList();
+    @RequestMapping("/admin/student/evaluation/list")
+    public List<Map> getStudentEvaluationList(){
+        return toEService.getStudentEvaluationList();
+    }
+    @RequestMapping("/admin/teacher/evaluation/list")
+    public List<Map> getTeacherEvaluationList(){
+        return toEService.getTeacherEvaluationList();
     }
     // Todo
     // add /admin prefix

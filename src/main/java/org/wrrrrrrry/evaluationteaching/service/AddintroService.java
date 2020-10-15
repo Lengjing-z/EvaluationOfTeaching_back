@@ -14,4 +14,6 @@ public interface AddintroService {
     int insertStudentToClass(List<ClassStudent> classStudents);
 
     int insertTeacherToCourse(List<CourseClassTeacher> courseClassTeachers);
+
+    int insertInstitute(List<Institute> institutes);
 }

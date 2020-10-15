@@ -22,6 +22,10 @@ public class AddIntro {
     public int createCourse(@RequestBody List<Course> courses){
         return addintroService.insertCourse(courses);
     }
+    @RequestMapping("/admin/institute/create")
+    public int createInstitute(@RequestBody List<Institute> institutes){
+        return addintroService.insertInstitute(institutes);
+    }
     @RequestMapping("/admin/insertInfo/user")
     public int createUser(@RequestBody List<User> users){
         return addintroService.insertUser(users);

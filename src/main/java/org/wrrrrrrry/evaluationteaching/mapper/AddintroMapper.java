@@ -19,4 +19,6 @@ public interface AddintroMapper {
     int insertStudentToClass(@Param("classStudents") List<ClassStudent> classStudents);
 
     int insertTeacherToCourse(@Param("courseClassTeachers") List<CourseClassTeacher> courseClassTeachers);
+
+    int insertInstitute(@Param("institutes") List<Institute> institutes);
 }

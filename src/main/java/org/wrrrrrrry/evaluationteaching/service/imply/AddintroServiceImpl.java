@@ -52,4 +52,9 @@ public class AddintroServiceImpl implements AddintroService {
 
         return addintroMapper.insertTeacherToCourse(courseClassTeachers);
     }
+
+    @Override
+    public int insertInstitute(List<Institute> institutes) {
+        return addintroMapper.insertInstitute(institutes);
+    }
 }
