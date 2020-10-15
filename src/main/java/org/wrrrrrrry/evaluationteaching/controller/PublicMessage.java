@@ -74,6 +74,14 @@ public class PublicMessage {
     public List<Map> getCCTByCourseId(int id){
         return publicMessageService.queryCCTByCoyurse(id);
     }
+    @RequestMapping("admin/class/allStudent")
+    public List<User> getUserByClass(int cid){
+        return publicMessageService.getStudentByClass(cid);
+    }
+    @RequestMapping("admin/user/allTeacher")
+    public List<User> getAllTeacher(){
+        return publicMessageService.queryAllTeacher();
+    }
 
     public UserDetails getUserInfo(){
         return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

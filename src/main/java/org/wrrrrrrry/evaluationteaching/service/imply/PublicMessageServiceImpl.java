@@ -81,4 +81,14 @@ public class PublicMessageServiceImpl implements PublicMessageService {
     public List<Map> queryCCTByCoyurse(int id) {
         return publicMessageMapper.queryCCtByCourse(id);
     }
+
+    @Override
+    public List<User> getStudentByClass(int cid) {
+        return publicMessageMapper.queryStudentByClass(cid);
+    }
+
+    @Override
+    public List<User> queryAllTeacher() {
+        return publicMessageMapper.queryAllTeacher();
+    }
 }

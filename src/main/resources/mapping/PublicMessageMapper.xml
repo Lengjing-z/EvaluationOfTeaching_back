@@ -94,4 +94,17 @@
         left join user u on cct.t_id = u.id
         where co.id = #{id}
     </select>
+    <select id="queryStudentByClass" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
+        select u.id, u.name, in_id, code, sex, age, height, addr, intr
+        from class
+        left join class_student cs on class.id = cs.cla_id
+        left join user u on cs.s_id = u.id
+        where class.id =#{cid}
+    </select>
+    <select id="queryAllTeacher" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
+        select user.id, name, password, in_id, code, sex, age, height, addr, intr
+        from user
+        left join user_power up on user.id = up.u_id
+        where up.p_id =2
+    </select>
 </mapper>

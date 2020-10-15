@@ -34,4 +34,9 @@ public interface PublicMessageMapper {
     List<Map> queryALlEByC(int cId);
 
     List<Map> queryCCtByCourse(int id);
+
+    List<User> queryStudentByClass(int cid);
+
+    List<User> queryAllTeacher();
+
 }

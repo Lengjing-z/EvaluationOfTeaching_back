@@ -31,4 +31,9 @@ public interface PublicMessageService {
     List<Map> getAllEByC(int cId);
 
     List<Map> queryCCTByCoyurse(int id);
+
+    List<User> getStudentByClass(int cid);
+
+    List<User> queryAllTeacher();
+
 }
