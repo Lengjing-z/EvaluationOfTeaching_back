@@ -97,10 +97,12 @@
             )
     </select>
     <select id="queryStudentByCCT" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
-        select user.id , sT.id as inId
-        from user
-        right join course_class_teacher cct on user.id = cct.t_id
-        right join studentToteacher sT on cct.id = sT.mid_id
+        select u.id , sT.id as inId
+        from studentToteacher sT
+        left join course_class_teacher cct on sT.mid_id = cct.id
+        left join class c on cct.cla_id = c.id
+        left join class_student cs on c.id = cs.cla_id
+        left join user u on cs.s_id = u.id
         where sT.id in (
             <foreach collection="stts" item="stt" separator=",">
                 #{stt.id}

@@ -31,7 +31,7 @@ public interface PublicMessageMapper {
 
     List<Map> queryCCT(String s);
 
-    List<Map> queryALlEByC(int cId);
+    List<Map> queryALlEByC(@Param("cId") int cId,@Param("code") String code);
 
     List<Map> queryCCtByCourse(int id);
 
@@ -39,4 +39,5 @@ public interface PublicMessageMapper {
 
     List<User> queryAllTeacher();
 
+    List<User> queryAllStudent();
 }

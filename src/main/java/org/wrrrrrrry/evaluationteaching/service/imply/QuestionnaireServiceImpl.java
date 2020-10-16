@@ -62,6 +62,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     public boolean releaseQuestionnaireCourse(List<StudentToTeacher> stts) {
         questionnaireMapper.addSTT(stts);
         List<User> students = questionnaireMapper.queryStudentByCCT(stts);
+        System.out.println(students);
         List<Message> messages = new ArrayList<>();
         stts.forEach(stt->students.stream().filter(stu->stu.getInId() == stt.getId()).collect(Collectors.toList()).forEach(stu->messages.add(Message.builder().sttId(stt.getId()).uId(stu.getId()).context("???").build())));
         questionnaireMapper.addMessages(messages);

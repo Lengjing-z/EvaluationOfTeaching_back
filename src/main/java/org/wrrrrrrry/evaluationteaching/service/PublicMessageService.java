@@ -28,7 +28,7 @@ public interface PublicMessageService {
 
     List<Map> queryCCT(String name);
 
-    List<Map> getAllEByC(int cId);
+    List<Map> getAllEByC(int cId, String code);
 
     List<Map> queryCCTByCoyurse(int id);
 
@@ -36,4 +36,5 @@ public interface PublicMessageService {
 
     List<User> queryAllTeacher();
 
+    List<User> queryAllStudent();
 }

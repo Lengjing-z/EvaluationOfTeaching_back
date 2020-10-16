@@ -78,12 +78,18 @@
     </select>
     <select id="queryALlEByC" resultType="java.util.Map">
         select sT.id as stId, sT.begin_time as beginTime,sT.end_time as endTime,
-               q.id as qnId, q.title as qnTitle, q.index_root_id as indicatorRoot
-        from class c
-        left join course_class_teacher cct on c.id = cct.cla_id
-        left join studentToteacher sT on cct.id = sT.mid_id
+               q.id as qnId, q.title as qnTitle, q.index_root_id as indicatorRoot,
+               m.is_finished as finished, teacher.id as teacherId, teacher.name as teacherName,
+               c2.id as courseId, c2.name as courseName
+        from studentToteacher sT
+        left join course_class_teacher cct on sT.mid_id = cct.id
+        left join class c on cct.cla_id = c.id
         left join questionnaire q on sT.qn_id = q.id
-        where c.id = #{cId}
+        left join message m on sT.id = m.stt_id
+        left join user u on m.u_id = u.id
+        left join user teacher on m.target_id = teacher.id
+        left join course c2 on cct.course_id = c2.id
+        where cct.cla_id = #{cId} and u.code =#{code}
     </select>
     <select id="queryCCtByCourse" resultType="java.util.Map">
         select c.id as classId, c.name as className,c.is_public as classIsPublic,
@@ -106,5 +112,11 @@
         from user
         left join user_power up on user.id = up.u_id
         where up.p_id =2
+    </select>
+    <select id="queryAllStudent" resultType="org.wrrrrrrry.evaluationteaching.entity.User">
+        select user.id, name, password, in_id, code, sex, age, height, addr, intr
+        from user
+                 left join user_power up on user.id = up.u_id
+        where up.p_id =1
     </select>
 </mapper>

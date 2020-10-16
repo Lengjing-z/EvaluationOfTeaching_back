@@ -73,8 +73,8 @@ public class PublicMessageServiceImpl implements PublicMessageService {
     }
 
     @Override
-    public List<Map> getAllEByC(int cId) {
-        return publicMessageMapper.queryALlEByC(cId);
+    public List<Map> getAllEByC(int cId, String code) {
+        return publicMessageMapper.queryALlEByC(cId,code);
     }
 
     @Override
@@ -90,5 +90,10 @@ public class PublicMessageServiceImpl implements PublicMessageService {
     @Override
     public List<User> queryAllTeacher() {
         return publicMessageMapper.queryAllTeacher();
+    }
+
+    @Override
+    public List<User> queryAllStudent() {
+        return publicMessageMapper.queryAllStudent();
     }
 }

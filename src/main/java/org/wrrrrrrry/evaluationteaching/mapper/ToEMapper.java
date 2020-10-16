@@ -42,9 +42,9 @@ public interface ToEMapper {
 
     List<Map> selectbECoPro(int sttId);
 
-    List<Map> selectbEInPro(int tttId);
+    List<Map> selectbEInPro(@Param("tttId") int tttId,@Param("code") String code);
 
-    List<StudentAnswer> selectBECoDetail(int sttId);
+    List<Map> selectBECoDetail(int sttId);
 
     List<TeacherAnswer> selectBEInDetail(int tttId);
 

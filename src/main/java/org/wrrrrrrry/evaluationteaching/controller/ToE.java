@@ -107,7 +107,7 @@ public class ToE {
     // useless
     @RequestMapping("beEvaluation/institute/progress")
     public List<Map> beEvaluationInstituteProgress(int tttId){
-        return toEService.bEInPro(tttId);
+        return toEService.bEInPro(tttId,getUserInfo().getUsername());
     }
 
     @RequestMapping("beEvaluation/course/all")

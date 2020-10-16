@@ -78,8 +78,8 @@ public class ToEServiceImpl implements ToEService {
     }
 
     @Override
-    public List<Map> bEInPro(int tttId) {
-        return toEMapper.selectbEInPro(tttId);
+    public List<Map> bEInPro(int tttId, String code) {
+        return toEMapper.selectbEInPro(tttId,code);
     }
 
     @Override

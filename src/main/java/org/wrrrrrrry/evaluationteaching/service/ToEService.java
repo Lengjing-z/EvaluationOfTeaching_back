@@ -39,7 +39,7 @@ public interface ToEService {
 
     Map bEInDe(int tttId);
 
-    List<Map> bEInPro(int tttId);
+    List<Map> bEInPro(int tttId, String code);
 
     List<Map> getBeEvaluationCourseList(String code);
 

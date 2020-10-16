@@ -35,7 +35,7 @@ public class PublicMessage {
     }
     @RequestMapping("/class/allEvaluations")
     public List<Map> getAllEvaluationByClass(int cId){
-        return publicMessageService.getAllEByC(cId);
+        return publicMessageService.getAllEByC(cId,getUserInfo().getUsername());
     }
 
     @RequestMapping("admin/power/all")
@@ -81,6 +81,10 @@ public class PublicMessage {
     @RequestMapping("admin/user/allTeacher")
     public List<User> getAllTeacher(){
         return publicMessageService.queryAllTeacher();
+    }
+    @RequestMapping("admin/user/allStudent")
+    public List<User> getAllStudent(){
+        return publicMessageService.queryAllStudent();
     }
 
     public UserDetails getUserInfo(){
