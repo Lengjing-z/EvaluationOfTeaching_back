@@ -74,7 +74,7 @@ public class ToEServiceImpl implements ToEService {
     public Map bEInDe(int tttId) {
         Map result = new HashMap();
         result.put("answers",toEMapper.selectBEInDetail(tttId));
-        return null;
+        return result;
     }
 
     @Override

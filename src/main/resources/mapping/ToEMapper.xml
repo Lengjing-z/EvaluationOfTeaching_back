@@ -196,7 +196,8 @@
                cla.id        as claId,
                cla.name      as claName,
                c.id          as cId,
-               c.name        as cName
+               c.name        as cName,
+               qn.index_root_id as indexRootId
         from studentToteacher sT
                  left join questionnaire qn on sT.qn_id = qn.id
                  left join course_class_teacher cct on cct.id = sT.mid_id
@@ -236,9 +237,10 @@
         where stt_id = #{sttId}
     </select>
     <select id="selectBEInDetail" resultType="org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer">
-        select id, ttt_id as tttId, q_id as qId, valuator_id as valuatorId, beValuator_id as beValuatorId, answer
+        select teacher_answer.id, ttt_id as tttId, q_id as qsId, valuator_id as valuatorId, beValuator_id as beValuatorId,q.index_end_id as indexId, answer
         from teacher_answer
-        where id = #{tttId}
+        left join question q on teacher_answer.q_id = q.id
+        where ttt_id = #{tttId}
     </select>
     <select id="selectStudentEvaluationList" resultType="java.util.Map">
         select studentToteacher.id as stId,

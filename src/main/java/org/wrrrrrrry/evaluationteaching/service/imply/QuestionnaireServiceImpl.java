@@ -51,7 +51,9 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         ttts.forEach(ttt->{
             List<User> group =  teachers.stream().filter(item->item.getInId() == ttt.getInId()).collect(Collectors.toList());
             group.forEach(x->group.forEach(y->{
-                if (!x.equals(y)) messages.add(Message.builder().uId(x.getId()).targetId(y.getId()).tttId(ttt.getId()).context("???").build());
+                if (!x.equals(y)) {
+                    messages.add(Message.builder().uId(x.getId()).targetId(y.getId()).tttId(ttt.getId()).context("???").build());
+                }
             }));
         });
         questionnaireMapper.addMessages(messages);
@@ -68,7 +70,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         questionnaireMapper.addMessages(messages);
         return true;
     }
-
+    @Override
     public int createIndicator(List<Index> indexList) {
         Integer maxId = questionnaireMapper.queryCurrentMaxId();
         indexList.forEach(item->{
@@ -97,8 +99,9 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         queue.add(questionnaireMapper.queryIndicatorRootById(index));
         int i = 0;
         while (i < queue.size()){
-            if (!queue.get(i).isEnd())
-            queue.addAll(questionnaireMapper.queryIndicatorsByPaNode(queue.get(i)));
+            if (!queue.get(i).isEnd()) {
+                queue.addAll(questionnaireMapper.queryIndicatorsByPaNode(queue.get(i)));
+            }
             i++;
         }
         return queue;
