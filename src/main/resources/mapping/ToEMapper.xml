@@ -222,7 +222,14 @@
         where stt.id = #{sttId}
     </select>
     <select id="selectbEInPro" resultType="java.util.Map">
-        select *
+        select m.is_finished as is_finished,
+                ttt.qn_id as qn_id,
+                target.id as target_id,
+                target.name as name,
+                ttt.id as ttt_id,
+                ttt.begin_time as begin_time,
+                ttt.end_time as end_time
+
         from teacherToteacher ttt
                  left join message m on ttt.id = m.ttt_id
                  left join user u on m.u_id = u.id
