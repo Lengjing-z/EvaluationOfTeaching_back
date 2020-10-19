@@ -111,42 +111,30 @@ public class ToEServiceImpl implements ToEService {
     }
 
     @Override
+    public List<Map> aeTD(int tttId) {
+        return toEMapper.selectAETD(tttId);
+    }
+
+    @Override
+    public List<Map> aeTP(int tttId) {
+        return toEMapper.selectAETP(tttId);
+    }
+
+    @Override
+    public List<Map> aeSD(int sttId) {
+        return toEMapper.selectAESD(sttId);
+    }
+
+    @Override
+    public List<Map> aeSP(int sttId) {
+        return toEMapper.selectAESP(sttId);
+    }
+
+    @Override
     public List<Map> getBeEvaluationInstituteList(String code) {
         return toEMapper.selectEvaluationInstituteList(code);
     }
 
-    /*
-    *  back is admin's part and above is teacher's part
-    * */
 
-    @Override
-    public Object getStudentEvaluationDetail(int studentId) {
-        // Todo
-        return null;
-    }
-
-    @Override
-    public Object getFinishedCourse() {
-        // Todo
-        return null;
-    }
-
-    @Override
-    public Object getFinishedCourseDetail(int studentId, int teacherId) {
-        // Todo
-        return null;
-    }
-
-    @Override
-    public Object getFinishedInstitute() {
-        // Todo
-        return null;
-    }
-
-    @Override
-    public Object getFinishedInstituteDetail(int reviewerId, int beReviewdId) {
-        // Todo
-        return null;
-    }
 
 }

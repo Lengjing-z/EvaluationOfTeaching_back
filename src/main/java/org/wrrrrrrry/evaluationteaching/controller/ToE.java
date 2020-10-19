@@ -57,41 +57,30 @@ public class ToE {
     public List<Map> getStudentEvaluationList(){
         return toEService.getStudentEvaluationList();
     }
+
     @RequestMapping("/admin/teacher/evaluation/list")
     public List<Map> getTeacherEvaluationList(){
         return toEService.getTeacherEvaluationList();
     }
-    // Todo
-    // add /admin prefix
-    @RequestMapping("admin/evaluation/student/detail")
-    public Object getStudentEvaluationDetail(int studentId) {
-        return toEService.getStudentEvaluationDetail(studentId);
+
+    @RequestMapping("/admin/teacher/evaluation/detail")
+    public List<Map> getTeacherEvaluationDetail(int tttId){
+        return toEService.aeTD(tttId);
     }
 
-    // Todo
-    // add </admin> prefix to the following 4 request mapping
-    // mapping one
-    @RequestMapping("admin/beEvaluation/finished/course")
-    public Object getFinishedCourse() {
-        return toEService.getFinishedCourse();
+    @RequestMapping("/admin/teacher/evaluation/progress")
+    public List<Map> getTeacherEvaluationProgress(int tttId){
+        return toEService.aeTP(tttId);
     }
 
-    // mapping two
-    @RequestMapping("admin/beEvaluation/finished/course/detail")
-    public Object getFinishedCourseDetail(int studentId, int teacherId) {
-        return toEService.getFinishedCourseDetail(studentId, teacherId);
+    @RequestMapping("/admin/student/evaluation/progress")
+    public List<Map> getStudentEvaluationProgress(int sttId){
+        return toEService.aeSP(sttId);
     }
 
-    // mapping three
-    @RequestMapping("admin/beEvaluation/finished/institute")
-    public Object getFinishedInstitute() {
-        return toEService.getFinishedInstitute();
-    }
-
-    // mapping four
-    @RequestMapping("admin/beEvaluation/finished/institute/detail")
-    public Object getFinishedInstituteDetail(int reviewerId, int beReviewedId) {
-        return toEService.getFinishedInstituteDetail(reviewerId, beReviewedId);
+    @RequestMapping("/admin/student/evaluation/detail")
+    public List<Map> getStudentEvaluationDetail(int sttId){
+        return toEService.aeSD(sttId);
     }
 
     @RequestMapping("beEvaluation/institute/all")
@@ -104,7 +93,6 @@ public class ToE {
         return toEService.bEInDe(tttId);
     }
 
-    // useless
     @RequestMapping("beEvaluation/institute/progress")
     public List<Map> beEvaluationInstituteProgress(int tttId){
         return toEService.bEInPro(tttId,getUserInfo().getUsername());

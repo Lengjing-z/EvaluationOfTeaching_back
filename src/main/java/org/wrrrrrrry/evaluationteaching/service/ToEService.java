@@ -21,16 +21,6 @@ public interface ToEService {
 
     List<Question> queryTeacherProgressingDetailById(int id);
 
-    Object getStudentEvaluationDetail(int studentId);
-
-    Object getFinishedCourse();
-
-    Object getFinishedCourseDetail(int studentId, int teacherId);
-
-    Object getFinishedInstitute();
-
-    Object getFinishedInstituteDetail(int reviewerId, int beReviewdId);
-
     int insertStudentAnswer(List<StudentAnswer> studentAnswers,String code);
 
     List<Map> getBeEvaluationInstituteList(String code);
@@ -51,4 +41,11 @@ public interface ToEService {
 
     List<Map> getTeacherEvaluationList();
 
+    List<Map> aeTD(int tttId);
+
+    List<Map> aeTP(int tttId);
+
+    List<Map> aeSD(int sttId);
+
+    List<Map> aeSP(int sttId);
 }

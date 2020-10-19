@@ -51,4 +51,12 @@ public interface ToEMapper {
     List<Map> selectStudentEvaluationList();
 
     List<Map> selectTeacherEvaluationList();
+
+    List<Map> selectAETD(int tttId);
+
+    List<Map> selectAETP(int tttId);
+
+    List<Map> selectAESD(int sttId);
+
+    List<Map> selectAESP(int sttId);
 }
