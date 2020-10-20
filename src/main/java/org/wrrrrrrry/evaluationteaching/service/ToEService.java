@@ -11,7 +11,7 @@ import java.util.Map;
 public interface ToEService {
     List<Questionnaire> queryFinishedQuestionnaire(String code,boolean isStudent);
 
-    List<Map<String, String>> queryFinishedDetailById(int id,boolean isStudent);
+    List<Map<String, String>> queryFinishedDetailById(int id,boolean isStudent,String code);
 
     List<Questionnaire> queryStudentProgressingQuestionnaire(String code);
 

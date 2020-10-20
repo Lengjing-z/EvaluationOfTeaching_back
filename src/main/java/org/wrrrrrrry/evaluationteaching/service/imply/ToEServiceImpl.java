@@ -28,11 +28,11 @@ public class ToEServiceImpl implements ToEService {
     }
 
     @Override
-    public List<Map<String, String>> queryFinishedDetailById(int id,boolean isStudent) {
+    public List<Map<String, String>> queryFinishedDetailById(int id,boolean isStudent,String code) {
         if (isStudent){
-            return toEMapper.selectStudentFinishedDetailById(id);
+            return toEMapper.selectStudentFinishedDetailById(id,code);
         }else {
-            return toEMapper.selectTeacherFinishedDetailById(id);
+            return toEMapper.selectTeacherFinishedDetailById(id,code);
         }
     }
 

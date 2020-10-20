@@ -25,7 +25,7 @@ public class ToE {
     }
     @RequestMapping("/evaluation/detail")
     public List<Map<String,String>> getFinishedDetailById(int id){
-            return toEService.queryFinishedDetailById(id,getUserInfo().getAuthorities().contains(new SimpleGrantedAuthority("ROLE_student")));
+            return toEService.queryFinishedDetailById(id,getUserInfo().getAuthorities().contains(new SimpleGrantedAuthority("ROLE_student")),getUserInfo().getUsername());
     }
     @RequestMapping("/evaluation/student/progressing")
     public List<Questionnaire> getStudentProgressingQuestionnaire(){

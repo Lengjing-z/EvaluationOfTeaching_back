@@ -107,14 +107,16 @@
         from question
                  left join questionnaire q on question.qn_id = q.id
                  left join student_answer sa on question.id = sa.q_id
-        where q.id = #{id}
+                 left join user u on sa.s_id = u.id
+        where q.id = #{id} and u.code = #{code}
     </select>
     <select id="selectTeacherFinishedDetailById" resultType="java.util.Map">
         select content as content, answer as answer
         from question
                  left join questionnaire q on question.qn_id = q.id
                  left join teacher_answer ta on question.id = ta.q_id
-        where q.id = #{id}
+                 left join user u on ta.beValuator_id = u.id
+        where q.id = #{id} and u.code=#{code}
     </select>
     <select id="selectStudentProgressingQuestionnaire" resultMap="questionnaire">
         select qn.id    as qnid,

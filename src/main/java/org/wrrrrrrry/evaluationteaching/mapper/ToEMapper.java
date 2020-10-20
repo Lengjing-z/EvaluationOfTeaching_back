@@ -16,9 +16,9 @@ public interface ToEMapper {
 
     List<Questionnaire> selectTeacherFinishedQuestionnaire(@Param("code") String code);
 
-    List<Map<String, String>> selectStudentFinishedDetailById(@Param("id") int id);
+    List<Map<String, String>> selectStudentFinishedDetailById(@Param("id") int id,@Param("code") String code);
 
-    List<Map<String, String>> selectTeacherFinishedDetailById(@Param("id") int id);
+    List<Map<String, String>> selectTeacherFinishedDetailById(@Param("id") int id,@Param("code") String code);
 
     List<Questionnaire> selectStudentProgressingQuestionnaire(@Param("code") String code);
 
