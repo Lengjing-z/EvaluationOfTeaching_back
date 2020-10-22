@@ -104,9 +104,9 @@
     </select>
     <select id="selectStudentFinishedDetailById" resultType="java.util.Map">
         select content as content, answer as answer
-        from question
+        from student_answer sa
+                 left join question on sa.q_id = question.id
                  left join questionnaire q on question.qn_id = q.id
-                 left join student_answer sa on question.id = sa.q_id
                  left join user u on sa.s_id = u.id
         where q.id = #{id} and u.code = #{code}
     </select>
@@ -173,6 +173,7 @@
 
     <select id="selectEvaluationInstituteList" resultType="java.util.Map">
         select tT.id         as tttId,
+               q.index_root_id as indexRootId,
                tT.end_time   as endTime,
                tT.begin_time as begainTime,
                q.id          as qId,
