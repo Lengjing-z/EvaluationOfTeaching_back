@@ -178,7 +178,8 @@
                q.id          as qId,
                q.title       as qTitle,
                i.id          as iId,
-               i.name        as iName
+               i.name        as iName,
+               q.index_root_id as indexRootId
         from teacherToteacher tT
                  left join questionnaire q on tT.qn_id = q.id
                  left join institute i on tT.in_id = i.id
@@ -245,7 +246,7 @@
         left join question q on student_answer.q_id = q.id
         where stt_id = #{sttId}
     </select>
-    <select id="selectBEInDetail" resultType="org.wrrrrrrry.evaluationteaching.entity.TeacherAnswer">
+    <select id="selectBEInDetail" resultType="java.util.Map">
         select teacher_answer.id, ttt_id as tttId, q_id as qsId, valuator_id as valuatorId, beValuator_id as beValuatorId,q.index_end_id as indexId, answer
         from teacher_answer
         left join question q on teacher_answer.q_id = q.id
